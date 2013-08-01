@@ -5,9 +5,13 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="simple"
 
-# Example aliases
+# ZSH_THEME="superjarin"
+# ZSH_THEME="geoffgarside"
+ZSH_THEME="mh"
+
+# tmux alias
+alias tmux="TERM=screen-256color-bce tmux"
 
 # git/zsh aliases
  alias zshconfig="mate ~/.zshrc"
@@ -52,7 +56,7 @@ ZSH_THEME="simple"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx brew ruby rails heroku github copydir last-working-dir)
+plugins=(git osx brew ruby rails rvm heroku github copydir last-working-dir)
 
 source $ZSH/oh-my-zsh.sh
 

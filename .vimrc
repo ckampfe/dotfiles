@@ -11,8 +11,10 @@ set nu
 " set ambiwidth=double
 set noshowmode
 set laststatus=2
-let g:airline_theme='solarized'
+let g:airline_theme='luna'
 let g:bufferline_echo = 0
+set ttimeoutlen=20
+
 
 " dem bundles
 Bundle 'gmarik/vundle'
