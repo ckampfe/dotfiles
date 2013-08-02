@@ -1,19 +1,25 @@
 set nocompatible
 filetype off
 
+" vundle setup
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-"syntax highlighting and line numbering
+" pathogen setup
+execute pathogen#infect()
+
+"syntax highlighting, line numbering, fixes
 syntax on
 set nu
+filetype plugin indent on     " required!
+
 
 " set ambiwidth=double
 set noshowmode
 set laststatus=2
 let g:airline_theme='luna'
 let g:bufferline_echo = 0
-set ttimeoutlen=20
+set ttimeoutlen=50
 
 
 " dem bundles
@@ -26,4 +32,3 @@ Bundle "myusuf3/numbers.vim"
 
 " fix airline width
 set tabstop=2 shiftwidth=2 expandtab
-filetype plugin indent on     " required!
