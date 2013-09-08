@@ -10,6 +10,11 @@ ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="geoffgarside"
 ZSH_THEME="mh"
 
+# general aliases
+alias ..='cd ..'
+alias ::='cd ../..'
+alias :::='cd ../../..'
+
 # tmux alias
 alias tmux="TERM=screen-256color-bce tmux"
 
@@ -56,7 +61,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx brew ruby rails rvm heroku github copydir last-working-dir)
+plugins=(osx brew ruby rails rvm heroku github copydir last-working-dir)
 
 source $ZSH/oh-my-zsh.sh
 
