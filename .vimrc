@@ -22,6 +22,10 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-surround'
 Bundle 'bling/vim-airline'
 " Bundle "myusuf3/numbers.vim"
+Bundle 'jelera/vim-javascript-syntax'
+
+colorscheme github
+
 
 " set ambiwidth=double
 set noshowmode
@@ -44,6 +48,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" splits
+set splitbelow
+set splitright
+
 cmap ntt NERDTreeToggle
 
 " For all text files set 'textwidth' to 78 characters.
@@ -60,7 +68,7 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+" nnoremap <Left> :echoe "Use h"<CR>
+" nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Up> :echoe "Use k"<CR>
+" nnoremap <Down> :echoe "Use j"<CR>
