@@ -14,6 +14,9 @@ ZSH_THEME="mh"
 alias ..='cd ..'
 alias ::='cd ../..'
 alias :::='cd ../../..'
+alias ::::='cd ../../../..'
+alias be='bundle exec '
+
 
 # tmux alias
 alias tmux="TERM=screen-256color-bce tmux"
@@ -61,12 +64,16 @@ alias tmux="TERM=screen-256color-bce tmux"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(osx brew ruby rails rvm heroku github copydir last-working-dir)
+plugins=(osx brew ruby rails heroku github copydir last-working-dir)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:/usr/local/rvm/gems/ruby-1.9.3-p448/bin:/usr/local/rvm/gems/ruby-1.9.3-p448@global/bin:/usr/local/rvm/rubies/ruby-1.9.3-p448/bin/bin:/usr/local/rvm/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
-# __rvm_project_rvmrc
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
