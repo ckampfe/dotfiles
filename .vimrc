@@ -21,10 +21,14 @@ Bundle 'gmarik/vundle'
 " Bundle 'FuzzyFinder'
 Bundle 'tpope/vim-surround'
 Bundle 'bling/vim-airline'
-" Bundle "myusuf3/numbers.vim"
+" Bundle 'myusuf3/numbers.vim'
 Bundle 'jelera/vim-javascript-syntax'
 
-colorscheme github
+" search
+set hlsearch
+
+" colorscheme github
+color bvemu
 
 
 " set ambiwidth=double
@@ -53,6 +57,9 @@ set splitbelow
 set splitright
 
 cmap ntt NERDTreeToggle
+
+" Set with at 80, add column indicator at 81
+set textwidth=80 colorcolumn=+1
 
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text setlocal textwidth=78

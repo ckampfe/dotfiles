@@ -11,29 +11,34 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="mh"
 
 # general aliases
-alias ..='cd ..'
-alias ::='cd ../..'
-alias :::='cd ../../..'
-alias ::::='cd ../../../..'
+# alias ..='cd ..'
+# alias ::='cd ../..'
+# alias :::='cd ../../..'
+# alias ::::='cd ../../../..'
 alias be='bundle exec '
-
+alias berc='bundle exec rake console'
+alias mylocalip='ifconfig | grep 192'
+alias v='vim '
+alias e='emacs '
+alias ls='ls -la '
 
 # tmux alias
 alias tmux="TERM=screen-256color-bce tmux"
 
 # git/zsh aliases
- alias zshconfig="mate ~/.zshrc"
- alias ohmyzsh="mate ~/.oh-my-zsh"
- alias gs='git status '
- alias ga='git add '
- alias gb='git branch '
- alias gc='git commit'
- alias gd='git diff'
- alias go='git checkout '
- alias gk='gitk --all&'
- alias gx='gitx --all'
- alias got='git '
- alias get='git '
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gk='gitk --all&'
+alias gx='gitx --all'
+alias got='git '
+alias get='git '
+
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -68,6 +73,7 @@ plugins=(osx brew ruby rails heroku github copydir last-working-dir)
 
 source $ZSH/oh-my-zsh.sh
 
+
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
 export RBENV_ROOT=/usr/local/var/rbenv
@@ -77,3 +83,15 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# attempting to write the ..='cd ..' alias in ruby, infinitely
+command_not_found_handler() if [[ $1 =~ "(\.\.)\.*" ]] ; then
+  # echo $1
+  # ruby -e 'BEGIN { pwd = %x("pwd") }; ("#{$1}".length - 1).times { |i| %x("cd #{pwd.split('/')[0..-i-2].join('/').chomp}") }'
+  # echo `ruby_dot_dirs $1`
+  `ruby_dot_dirs $1`
+  # ruby -e 'BEGIN { dir = `ruby_dot_dirs #{$1}` };
+  #           %x("cd #{dir}")'
+else
+  echo "zsh: command not found: $1"
+fi
