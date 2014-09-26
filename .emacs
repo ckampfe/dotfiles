@@ -23,6 +23,7 @@
 (require 'evil)
 (evil-mode 1)
 
+;; evil tabs
 (global-evil-tabs-mode t)
 
 (global-evil-leader-mode)
@@ -50,7 +51,7 @@
       scroll-preserve-screen-position t)
 
 ;; line numbers
-(global-linum-mode 1) 
+(global-linum-mode 1)
 
 ;; spacing to the right of line numbers
 (defun linum-format-func (line)
@@ -84,3 +85,22 @@
                        helm-c-source-recentf
                        helm-c-source-locate)
                      "*helm-my-buffers*"))
+
+;; trailing whitespace and 80-char column overflow highlighting
+(require 'whitespace)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(scala-mode-fontlock:multiline-highlight t)
+ '(scala-mode-indent:dot-indent t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
