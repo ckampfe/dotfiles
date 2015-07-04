@@ -21,11 +21,15 @@
      ;; (git :variables
      ;;      git-gutter-use-fringe t)
      auto-completion
+     clojure
      company
      colors
+     elixir
      emacs-lisp
      ensime
-     erlang-elixir
+     erlang
+     git
+     github
      markdown
      ocaml
      org
@@ -36,8 +40,9 @@
      scala
      shell
      slime
+     syntax-checking
+     themes-megapack
      whitespace
-     ;; syntax-checking
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -73,7 +78,10 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(zenburn
+   dotspacemacs-themes '(hc-zenburn
+                         stekene-dark
+                         stekene-light
+                         ritchie
                          solarized-light
                          solarized-dark
                          leuven
@@ -153,7 +161,7 @@ before layers configuration."
   (setq-default evil-escape-key-sequence "jk")
   ;; whitespace
   (setq whitespace-style '(face empty tabs lines-tail trailing))
-  (setq org-agenda-files (list "~/tasks.org"))
+  (setq org-agenda-files (list "~/org/*.org"))
   )
 
 (defun dotspacemacs/config ()
@@ -167,12 +175,16 @@ before layers configuration."
   ;; line number spacing
   (setq linum-format " %d ")
   ;; Show the fill column by default
-  (set-fill-column 80)
+  (set-fill-column 90)
   (spacemacs/toggle-fill-column-indicator)
   (spacemacs/toggle-auto-fill-mode)
   ;; 2-space indent
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 2)
+  ;; start company mode
+  (company-mode t)
+  ;; enable whitespace
+  (global-whitespace-mode)
   ;; start neotree
   (neotree)
 )
