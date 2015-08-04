@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 project_name" >&2
+  exit 1
+fi
+
+project_name=$1
+
+mkdir -p $project_name/src/{main,test}/{resources,scala}
+mkdir $project_name/{lib,project,target}
+
+# create an initial build.sbt file
+echo "name         := \"$project_name\"
+
+version      := \"0.0.1\"
+
+scalaVersion := \"2.11.7\"
+
+libraryDependencies ++= Seq(
+)" > $project_name/build.sbt
