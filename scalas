@@ -1,0 +1,5 @@
+#!/bin/sh
+
+java -Dsbt.main.class=sbt.ScriptMain \
+     -Dsbt.boot.directory=/Users/clark/.sbt/boot \
+     -jar /usr/local/Cellar/sbt/0.13.8/libexec/sbt-launch.jar "$@"
