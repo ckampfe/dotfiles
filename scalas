@@ -1,5 +1,6 @@
 #!/bin/sh
-
-java -Dsbt.main.class=sbt.ScriptMain \
+SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled"
+java $SBT_OPTS \
+     -Dsbt.main.class=sbt.ScriptMain \
      -Dsbt.boot.directory=/Users/clark/.sbt/boot \
      -jar /usr/local/Cellar/sbt/0.13.8/libexec/sbt-launch.jar "$@"
