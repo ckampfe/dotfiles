@@ -12,14 +12,7 @@
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     ;; --------------------------------------------------------
-     ;; Example of useful layers you may want to use right away
-     ;; Uncomment a layer name and press C-c C-c to install it
-     ;; --------------------------------------------------------
-     ;; auto-completion
-     ;; better-defaults
-     ;; (git :variables
-     ;;      git-gutter-use-fringe t)
+     alchemist
      auto-completion
      clojure
      company
@@ -45,7 +38,7 @@
      whitespace
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(toxi-theme)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'
@@ -78,7 +71,9 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(hc-zenburn
+   dotspacemacs-themes '(material
+                         hc-zenburn
+                         material-light
                          stekene-dark
                          stekene-light
                          ritchie
@@ -90,8 +85,8 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Ubuntu Mono"
-                               :size 13
+   dotspacemacs-default-font '("Hack"
+                               :size 11
                                :weight normal
                                :width normal
                                :slant normal
@@ -180,6 +175,7 @@ before layers configuration."
   (spacemacs/toggle-auto-fill-mode)
   ;; 2-space indent
   (setq-default indent-tabs-mode nil)
+  ;; tab width as two spaces
   (setq-default tab-width 2)
   ;; start company mode
   (company-mode t)
@@ -189,7 +185,15 @@ before layers configuration."
   ;; instead of as a headline
   (setq org-export-headline-levels 2)
   ;; wordwrap long lines
-  (setq spacemacs/toggle-truncate-lines t)
+  ;; (setq spacemacs/toggle-truncate-lines t)
+  ;; automatically wrap words past the fill column
+  (add-hook 'org-mode-hook 'turn-on-auto-fill)
+  ;; (auto-fill-mode t)
+  ;; company mode in alchemist mode
+  ;; for some reason alchemist isn't loading, add manual hook
+  (add-hook 'elixir-mode-hook 'alchemist-mode)
+  (add-hook 'alchemist-mode-hook 'company-mode)
+  (add-hook 'alchemist-mode-hook 'auto-complete-mode)
 )
 
 
