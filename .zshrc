@@ -3,6 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 export TERM=screen-256color
 
 source ~/antigen.zsh
+source /usr/local/share/zsh/site-functions/_aws
 antigen use oh-my-zsh
 
 antigen-bundle git
@@ -21,8 +22,11 @@ antigen theme mh
 # Tell antigen that you're done.
 antigen apply
 
+export RPROMPT=""
+export PROMPT="[%{$fg[$NCOLOR]%}%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]$(git_prompt_info)
+$fg[blue]%B%n%b%(!.#.$)> "
 
-# editor/generic
+
 alias tmux="TERM=xterm-256color tmux"
 alias be='bundle exec '
 alias berc='bundle exec rake console'
@@ -30,7 +34,7 @@ alias mylocalip='ifconfig | grep 192'
 alias v='vim '
 alias vim='nvim '
 alias e='emacs '
-alias ls='ls -Glah ' # color
+# alias ls='ls -Glah ' # color
 alias diff='colordiff '
 alias zshconfig="vim ~/.zshrc"
 alias youp3="youtube-dl -x --audio-format mp3 "
@@ -71,6 +75,7 @@ plugins=(osx brew ruby rails heroku github copydir last-working-dir)
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/clark/.rvm/bin:/usr/local/sbin"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH=~/anaconda/bin:"$PATH"
 # export PATH="/usr/local/openresty/nginx/sbin:$PATH"
 
 export MANPATH="/usr/local/man:$MANPATH"
