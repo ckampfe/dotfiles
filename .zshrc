@@ -22,9 +22,11 @@ antigen theme mh
 # Tell antigen that you're done.
 antigen apply
 
-export RPROMPT=""
-export PROMPT="[%{$fg[$NCOLOR]%}%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]$(git_prompt_info)
-$fg[blue]%B%n%b%(!.#.$)> "
+# null out the RPROMPT because we're showing git info on the regular PROMPT
+RPROMPT=''
+
+PROMPT='[%{$fg[$NCOLOR]%}%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]$(git_prompt_info)
+$fg[blue]%B%n%b%(!.#.$)> '
 
 
 alias tmux="TERM=xterm-256color tmux"
