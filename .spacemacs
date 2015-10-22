@@ -12,23 +12,23 @@
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     alchemist
      auto-completion
      clojure
      company
      colors
      elixir
      emacs-lisp
-     ensime
      erlang
      git
      github
+     java
      markdown
      ocaml
      org
      osx
      paredit
      ruby
+     ruby-on-rails
      rust
      scala
      shell
@@ -37,6 +37,7 @@
      syntax-checking
      themes-megapack
      whitespace
+     yaml
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(toxi-theme)
@@ -189,6 +190,8 @@ before layers configuration."
   ;; (setq spacemacs/toggle-truncate-lines t)
   ;; automatically wrap words past the fill column
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
+
+  (fancy-battery-mode 1)
   ;; (auto-fill-mode t)
   ;; company mode in alchemist mode
   ;; for some reason alchemist isn't loading, add manual hook
