@@ -75,8 +75,7 @@ alias mr='mix run'
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(osx brew ruby rails heroku github copydir last-working-dir)
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/clark/.rvm/bin:/usr/local/sbin"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin"
 export PATH=~/anaconda/bin:"$PATH"
 # export PATH="/usr/local/openresty/nginx/sbin:$PATH"
 
@@ -84,10 +83,21 @@ export MANPATH="/usr/local/man:$MANPATH"
 export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
 export EDITOR='vim'
 
+# ruby
+# look for rubies in ~/.rubies
+if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
+  source /usr/local/share/chruby/chruby.sh
+fi
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+chruby ruby-2.0
+
 # go
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
+
+# python/anaconda
+export DYLD_FALLBACK_LIBRARY_PATH=$HOME/anaconda/lib/:$DYLD_FALLBACK_LIBRARY_PATH
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
