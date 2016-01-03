@@ -17,16 +17,19 @@
      company
      colors
      elixir
+     elm
      emacs-lisp
      erlang
      git
      github
+     go
      java
      markdown
      ocaml
      org
      osx
      paredit
+     python
      ruby
      ruby-on-rails
      rust
@@ -34,6 +37,7 @@
      shell
      slime
      sql
+     swift
      syntax-checking
      themes-megapack
      whitespace
@@ -87,7 +91,7 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Hack"
+   dotspacemacs-default-font '("Source Code Pro"
                                :size 12
                                :weight normal
                                :width normal
@@ -159,6 +163,7 @@ before layers configuration."
   ;; whitespace
   (setq whitespace-style '(face empty tabs lines-tail trailing))
   (setq org-agenda-files (list "~/org/*.org"))
+  ;; (setq-default dotspacemacs-configuration-layers '(elm))
   )
 
 (defun dotspacemacs/config ()
@@ -198,8 +203,28 @@ before layers configuration."
   (add-hook 'elixir-mode-hook 'alchemist-mode)
   (add-hook 'alchemist-mode-hook 'company-mode)
   (add-hook 'alchemist-mode-hook 'auto-complete-mode)
+
+  ;; disable selection of error buffer when displayed
+  (setq cider-auto-select-error-buffer nil)
+
+  ;; chruby
+  ;; (require 'chruby)
+  ;; (chruby "ruby-2.0.0")
 )
 
+;; https://superuser.com/questions/603421/how-to-remove-smart-quotes-in-copy-paste
+(defun replace-smart-quotes (beg end)
+  "Replace 'smart quotes' in buffer or region with ascii quotes."
+  (interactive "r")
+  (format-replace-strings '(("\x201C" . "\"")
+                            ("\x201D" . "\"")
+                            ("\x2018" . "'")
+                            ("\x2019" . "'"))
+                          nil beg end))
+
+;; (elm :variables
+;;      elm-reactor-port "3000"          ; default 8000
+;;      elm-reactor-address "0.0.0.0") ; default 127.0.0.1
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
