@@ -10,6 +10,9 @@ project_name=$1
 mkdir -p $project_name/src/{main,test}/{resources,scala}
 mkdir $project_name/{lib,project,target}
 
+# create `project/build.properties' with a pinned sbt version
+echo "sbt.version=0.13.9" > $project_name/project/build.properties
+
 # create an initial build.sbt file
 echo "name         := \"$project_name\"
 
