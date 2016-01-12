@@ -1,14 +1,25 @@
-// load.ivy("com.lihaoyi" %% "ammonite-shell" % ammonite.Constants.version)
-// val session = ammonite.shell.ShellSession()
-// import session._
-// ammonite.shell.Configure(repl, wd)
+// https://lihaoyi.github.io/Ammonite/#Ammonite-Shell
+load.ivy("com.lihaoyi" %% "ammonite-shell" % ammonite.Constants.version)
+
+// https://lihaoyi.github.io/scalatags/
+load.ivy("com.lihaoyi" %% "scalatags" % "0.5.3")
+
+// http://http4s.org/
+load.ivy("org.http4s" %% "http4s-blaze-client" % "0.11.3")
+
+// https://github.com/tototoshi/scala-csv
+load.ivy("com.github.tototoshi" %% "scala-csv" % "1.2.2")
+
+// https://github.com/travisbrown/circe
+load.ivy("io.circe" %% "circe-core" % "0.2.1")
+load.ivy("io.circe" %% "circe-generic" % "0.2.1")
+load.ivy("io.circe" %% "circe-parse" % "0.2.1")
+@
+val shellSession = ammonite.shell.ShellSession()
+import shellSession._
+import ammonite.shell.PPrints._
 import ammonite.ops._
-import ammonite.ops.ImplicitWd._
-repl.prompt.bind(s"[${cwd.toString}]@ ")
+import ammonite.shell._
+ammonite.shell.Configure(repl, wd)
 
-@ import scala.math._
-
-@ load.ivy("com.lihaoyi" %% "scalatags" % "0.5.2")
-@ load.ivy("com.github.tototoshi" %% "scala-csv" % "1.2.2")
-// @ load.ivy("org.json4s" %% "json4s-jackson" % "3.2.11")
-@ load.ivy("org.scalaj" %% "scalaj-http" % "1.1.5")
+repl.prompt.bind(s"[${wd.toString}]@ ")
