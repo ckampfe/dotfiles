@@ -12,6 +12,13 @@ load.ivy("org.http4s" %% "http4s-blaze-client" % "0.11.3")
 // https://github.com/tototoshi/scala-csv
 load.ivy("com.github.tototoshi" %% "scala-csv" % "1.2.2")
 
+// https://github.com/nrinaudo/tabulate
+val tabulateVersion = "0.1.7"
+load.ivy("com.nrinaudo" %% "tabulate" % tabulateVersion)
+load.ivy("com.nrinaudo" %% "tabulate-cats" % tabulateVersion)
+load.ivy("com.nrinaudo" %% "tabulate-generic" % tabulateVersion)
+load.ivy("com.nrinaudo" %% "tabulate-jackson" % tabulateVersion)
+
 // https://github.com/travisbrown/circe
 val circeVersion = "0.2.1"
 load.ivy("io.circe" %% "circe-core" % circeVersion)
