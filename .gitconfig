@@ -16,3 +16,9 @@
 	dump = cat-file -p
 [push]
 	default = simple
+[transfer]
+  fsckobjects = true
+[fetch]
+  fsckobjects = true
+[receive]
+  fsckobjects = true
