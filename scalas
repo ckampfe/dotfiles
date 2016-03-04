@@ -3,4 +3,4 @@ SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled"
 java $SBT_OPTS \
      -Dsbt.main.class=sbt.ScriptMain \
      -Dsbt.boot.directory=/Users/clark/.sbt/boot \
-     -jar /usr/local/Cellar/sbt/0.13.9/libexec/sbt-launch.jar "$@"
+     -jar /usr/local/Cellar/sbt/0.13.11/libexec/sbt-launch.jar "$@"
