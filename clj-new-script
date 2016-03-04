@@ -1,0 +1,19 @@
+#!/bin/sh
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 script_name" >&2
+  exit 1
+fi
+
+script_name=$1
+
+echo "#!/usr/bin/env lein-exec
+
+(use '[leiningen.exec :only (deps)])
+
+(deps '[])
+
+(require '[clojure.data.csv :as csv])
+
+" > $script_name
+chmod +ux $script_name
