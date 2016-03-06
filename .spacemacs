@@ -213,7 +213,7 @@ before layers configuration."
 )
 
 ;; https://superuser.com/questions/603421/how-to-remove-smart-quotes-in-copy-paste
-(defun replace-smart-quotes (beg end)
+(defun ck/replace-smart-quotes (beg end)
   "Replace 'smart quotes' in buffer or region with ascii quotes."
   (interactive "r")
   (format-replace-strings '(("\x201C" . "\"")
@@ -221,6 +221,34 @@ before layers configuration."
                             ("\x2018" . "'")
                             ("\x2019" . "'"))
                           nil beg end))
+
+(defun ck/remove-org-links (beg end)
+  "remove org links"
+  (interactive "r")
+  (while (re-search-forward "<a id.*<\/a>" nil t)
+    (replace-match "")))
+
+(defun replace-double-spaces-with-single (beg end)
+  "replace double spaces with single space"
+  (interactive "r")
+  (format-replace-strings '(("  " . " "))
+                          nil beg end))
+
+(defun ck/remove-md-h2 (beg end)
+  "remove second level headings"
+  (interactive "r")
+  (format-replace-strings '(("## " . ""))
+                          nil beg end))
+
+(defun ck/prep-blog (beg end)
+  "prep the markdown document for the blog"
+  (interactive "r")
+  (let '((b 1)
+         (e (buffer-end 1)))
+    (ck/replace-smart-quotes b e)
+    (ck/replace-double-spaces-with-single b e)
+    (ck/remove-org-md-h2 b e)
+    (ck/remove-org-links b e)))
 
 ;; (elm :variables
 ;;      elm-reactor-port "3000"          ; default 8000
