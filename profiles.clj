@@ -1,5 +1,5 @@
 {:repl {:dependencies [[org.clojure/tools.nrepl "0.2.12"]]}
- :user {:plugins [[cider/cider-nrepl "0.10.2"]
+ :user {:plugins [[cider/cider-nrepl "0.11.0"]
                   [org.clojure/tools.nrepl "0.2.12"]
                   [refactor-nrepl "2.0.0"]
                   [lein-exec "0.3.6"]
