@@ -105,10 +105,10 @@ object imports {
 }
 
 def linesOfIn(what: String, where: Path = wd) =
-  (ls.rec!(wd))
+  (ls.rec!(where))
     .filter(_.isFile)
     .filter(file => file.ext == what)
-    .map(file => (file.name, (read.lines(wd/(file.name)).size)))
+    .map(file => (file.name, (read.lines(file).size)))
 
 repl.prompt.bind(
   s"""[${wd.toString}]
