@@ -42,10 +42,17 @@ object git {
   def diff   = %git("diff")
   def commit = %git("commit", "-v")
   def remote = %git("remote", "-v")
+  def history = %git(
+    "log",
+    "--pretty=format:%h %ad  | %s%d [%an]'",
+    "--graph",
+    "--date=short"
+)
 }
 
 def gs = git.status
 def gd = git.diff
+def gh = git.history
 
 // sudo powers
 def htop = %sudo("htop")
