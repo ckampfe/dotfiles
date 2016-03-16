@@ -10,7 +10,7 @@ script_name=$1
 echo "#!/usr/local/bin/scalas
 
 /***
-scalaVersion := \"2.11.7\"
+scalaVersion := \"2.11.8\"
 libraryDependencies ++= Seq()
 */
 
