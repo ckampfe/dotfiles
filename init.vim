@@ -109,3 +109,6 @@ au BufNewFile,BufRead *.hql set filetype=hive expandtab
 
 " for .q files
 au BufNewFile,BufRead *.q set filetype=hive expandtab
+
+" for .clj and .boot files
+au BufNewFile,BufRead *.clj,*.boot set filetype=clojure expandtab
