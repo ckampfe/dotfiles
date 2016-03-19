@@ -107,6 +107,13 @@ object imports {
       import org.http4s.Http4s._
     """)
 
+  def shapeless() =
+    repl.load("""
+      load.ivy("com.chuusai" %% "shapeless" % "2.3.0")
+      @
+      import shapeless._
+    """)
+
   // https://github.com/non/cats
   // load.ivy("org.typelevel" %% "cats" % "0.4.1")
 }
