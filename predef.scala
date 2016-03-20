@@ -47,7 +47,14 @@ object git {
     "--pretty=format:%h %ad  | %s%d [%an]'",
     "--graph",
     "--date=short"
-)
+  )
+  def push(remote: String, branch: String) = %git("push", remote, branch)
+
+  object push {
+    def origin(branch: String) = push("origin", branch)
+    def upstream(branch: String) = push("upstream", branch)
+    def heroku(branch: String) = push("heroku", branch)
+  }
 }
 
 def gs = git.status
