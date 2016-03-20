@@ -13,6 +13,9 @@ mkdir $project_name/{lib,project,target}
 # create `project/build.properties' with a pinned sbt version
 echo "sbt.version=0.13.11" > $project_name/project/build.properties
 
+# add assembly
+echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.2")' > $project_name/project/plugins.sbt
+
 # create an initial build.sbt file
 echo "name         := \"$project_name\"
 
