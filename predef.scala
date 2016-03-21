@@ -116,6 +116,7 @@ object imports {
 
   def shapeless() =
     repl.load("""
+      // https://github.com/milessabin/shapeless
       load.ivy("com.chuusai" %% "shapeless" % "2.3.0")
       @
       import shapeless._
