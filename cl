@@ -7,7 +7,7 @@
 (def now (Instant/now))
 (def log-location "/Users/clark/captains_log")
 
-(defn date [timestamp]
+(defn timestamp->date [timestamp]
   (-> timestamp
       (.atZone ZoneOffset/UTC)
       (.toLocalDate)
@@ -17,7 +17,7 @@
   (str "[" (.toString timestamp) "]" " :: " entry "\n"))
 
 (defn update-log! [log-dir timestamp entry]
-  (let [path (str log-dir "/" (.toString (date timestamp)))
+  (let [path (str log-dir "/" (timestamp->date timestamp))
         todays-log-file-exists? (if (.exists (io/file path)) true false)
         body `(spit ~path
                     ~(log-entry timestamp entry)
