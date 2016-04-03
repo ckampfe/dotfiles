@@ -7,13 +7,15 @@ fi
 
 script_name=$1
 
-echo "#!/usr/bin/env lein-exec
+echo "#!/usr/bin/env boot
 
-(use '[leiningen.exec :only (deps)])
+(set-env! :dependencies '[])
+;; (set-env! :dependencies '[[org.clojure/data.csv \"0.1.4\"]])
+;; (require '[clojure.java.io :as io]
+;;          '[clojure.data.csv :as csv])
+;; (import '[java.time Instant])
 
-(deps '[])
-
-(require '[clojure.data.csv :as csv])
-
+(defn -main [& args]
+  (println \"hello, world\"))
 " > $script_name
 chmod +ux $script_name
