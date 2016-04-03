@@ -18,7 +18,7 @@
 
 (defn update-log! [log-dir timestamp entry]
   (let [path (str log-dir "/" (timestamp->date timestamp))
-        todays-log-file-exists? (if (.exists (io/file path)) true false)
+        todays-log-file-exists? (.exists (io/file path))
         body `(spit ~path
                     ~(log-entry timestamp entry)
                     ~@(if todays-log-file-exists? (list :append true) nil))
