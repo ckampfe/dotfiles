@@ -28,7 +28,7 @@
 
 (defn -main [& args]
   (if (not (first args))
-    ((println "Usage: te \"message\"")
+    ((println "Usage: cl \"message\"")
      (System/exit 0)))
 
   (let [entry (first args)]
