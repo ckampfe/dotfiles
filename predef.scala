@@ -72,7 +72,7 @@ object imports {
   def scalaTags() =
     repl.load("""
       // https://lihaoyi.github.io/scalatags/
-      load.ivy("com.lihaoyi" %% "scalatags" % "0.5.4")
+      load.ivy("com.lihaoyi" %% "scalatags" % "0.5.5")
       @
       import scalatags.Text.all._
     """)
@@ -80,7 +80,7 @@ object imports {
   def kantan() =
     repl.load("""
       // https://github.com/nrinaudo/kantan.csv
-      val kantanCsvVersion = "0.1.8"
+      val kantanCsvVersion = "0.1.9"
       load.ivy("com.nrinaudo" %% "kantan.csv" % kantanCsvVersion)
       load.ivy("com.nrinaudo" %% "kantan.csv-cats" % kantanCsvVersion)
       load.ivy("com.nrinaudo" %% "kantan.csv-generic" % kantanCsvVersion)
@@ -89,13 +89,13 @@ object imports {
       import java.io.File
       import kantan.csv._
       import kantan.csv.ops._
-      import kantan.csv.generic.codecs._
+      import kantan.csv.generic._
     """)
 
   def circe() =
     repl.load("""
       // https://github.com/travisbrown/circe
-      val circeVersion = "0.3.0"
+      val circeVersion = "0.4.1"
       load.ivy("io.circe" %% "circe-core" % circeVersion)
       load.ivy("io.circe" %% "circe-generic" % circeVersion)
       load.ivy("io.circe" %% "circe-parser" % circeVersion)
@@ -109,7 +109,7 @@ object imports {
   def http4s() =
     repl.load("""
       // http://http4s.org/
-      load.ivy("org.http4s" %% "http4s-blaze-client" % "0.11.3")
+      load.ivy("org.http4s" %% "http4s-blaze-client" % "0.13.2a")
       @
       import org.http4s.Http4s._
     """)
@@ -122,8 +122,15 @@ object imports {
       import shapeless._
     """)
 
-  // https://github.com/non/cats
-  // load.ivy("org.typelevel" %% "cats" % "0.4.1")
+  def cats() =
+    repl.load("""
+      // https://github.com/non/cats
+      load.ivy("org.typelevel" %% "cats" % "0.5.0")
+      @
+      import cats._
+      import cats.std.all._
+      import cats.implicits._
+    """)
 }
 
 def linesOfIn(what: String, where: Path = wd) =
