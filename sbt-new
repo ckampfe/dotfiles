@@ -24,4 +24,5 @@ version      := \"0.0.1\"
 scalaVersion := \"2.11.8\"
 
 libraryDependencies ++= Seq(
+  \"com.lihaoyi\" %% \"ammonite-ops\" % \"0.5.7\"
 )" > $project_name/build.sbt

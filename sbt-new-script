@@ -11,7 +11,9 @@ echo "#!/usr/local/bin/scalas
 
 /***
 scalaVersion := \"2.11.8\"
-libraryDependencies ++= Seq()
+libraryDependencies ++= Seq(
+  \"com.lihaoyi\" %% \"ammonite-ops\" % \"0.5.7\"
+)
 */
 
 !#
