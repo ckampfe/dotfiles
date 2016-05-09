@@ -25,8 +25,7 @@ antigen apply
 # null out the RPROMPT because we're showing git info on the regular PROMPT
 RPROMPT=''
 
-PROMPT='[%{$fg[$NCOLOR]%}%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]$(git_prompt_info)
-$fg[blue]%B%n%b%(!.#.$)> '
+PROMPT="[%{$fg[$NCOLOR]%}%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]""$(git_prompt_info)"$'\n'"$fg[blue]%B%n%b%(!.#.$)> "
 
 
 alias tmux="TERM=xterm-256color tmux"
