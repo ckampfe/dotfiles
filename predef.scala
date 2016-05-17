@@ -80,7 +80,7 @@ object imports {
   def kantan() =
     repl.load("""
       // https://github.com/nrinaudo/kantan.csv
-      val kantanCsvVersion = "0.1.9"
+      val kantanCsvVersion = "0.1.10"
       load.ivy("com.nrinaudo" %% "kantan.csv" % kantanCsvVersion)
       load.ivy("com.nrinaudo" %% "kantan.csv-cats" % kantanCsvVersion)
       load.ivy("com.nrinaudo" %% "kantan.csv-generic" % kantanCsvVersion)
@@ -117,7 +117,7 @@ object imports {
   def shapeless() =
     repl.load("""
       // https://github.com/milessabin/shapeless
-      load.ivy("com.chuusai" %% "shapeless" % "2.3.0")
+      load.ivy("com.chuusai" %% "shapeless" % "2.3.1")
       @
       import shapeless._
     """)
