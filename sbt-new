@@ -25,4 +25,23 @@ scalaVersion := \"2.11.8\"
 
 libraryDependencies ++= Seq(
   \"com.lihaoyi\" %% \"ammonite-ops\" % \"0.5.7\"
-)" > $project_name/build.sbt
+)\n" >> $project_name/build.sbt
+
+echo "scalacOptions ++= Seq(
+  \"-deprecation\",
+  \"-encoding\", \"UTF-8\", // yes, this is 2 args
+  \"-feature\",
+  \"-language:existentials\",
+  \"-language:higherKinds\",
+  \"-language:implicitConversions\",
+  \"-unchecked\",
+  \"-Xfatal-warnings\",
+  \"-Xfuture\",
+  \"-Xlint _\",
+  \"-Yno-adapted-args\",
+  \"-Ywarn-dead-code\",
+  \"-Ywarn-numeric-widen\",
+  \"-Ywarn-value-discard\",
+  \"-Ywarn-unused-import\" // 2.11 only
+)" >> $project_name/build.sbt
+
