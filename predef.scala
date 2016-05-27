@@ -80,7 +80,7 @@ object imports {
   def kantan() =
     repl.load("""
       // https://github.com/nrinaudo/kantan.csv
-      val kantanCsvVersion = "0.1.10"
+      val kantanCsvVersion = "0.1.11"
       load.ivy("com.nrinaudo" %% "kantan.csv" % kantanCsvVersion)
       load.ivy("com.nrinaudo" %% "kantan.csv-cats" % kantanCsvVersion)
       load.ivy("com.nrinaudo" %% "kantan.csv-generic" % kantanCsvVersion)
