@@ -125,7 +125,7 @@ object imports {
   def cats() =
     repl.load("""
       // https://github.com/non/cats
-      load.ivy("org.typelevel" %% "cats" % "0.5.0")
+      load.ivy("org.typelevel" %% "cats" % "0.6.0")
       @
       import cats._
       import cats.std.all._
