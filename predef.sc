@@ -41,7 +41,7 @@ def brew = {
 object git {
   def status = %git("status")
   def diff   = %git("diff")
-  def commit = %git("commit", "-v")
+  def commit = %git("commit", "-vS")
   def remote = %git("remote", "-v")
   def history = %git(
     "log",
