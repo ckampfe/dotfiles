@@ -95,7 +95,7 @@ object imports {
   def circe() =
     repl.load("""
       // https://github.com/travisbrown/circe
-      val circeVersion = "0.4.1"
+      val circeVersion = "0.5.0-M2"
       load.ivy("io.circe" %% "circe-core" % circeVersion)
       load.ivy("io.circe" %% "circe-generic" % circeVersion)
       load.ivy("io.circe" %% "circe-parser" % circeVersion)
