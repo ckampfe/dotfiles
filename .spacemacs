@@ -48,7 +48,8 @@
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'
-   dotspacemacs-delete-orphan-packages t))
+   dotspacemacs-delete-orphan-packages t)
+  )
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -78,6 +79,7 @@ before layers configuration."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(material
+                         minimal
                          hc-zenburn
                          material-light
                          stekene-dark
@@ -92,11 +94,11 @@ before layers configuration."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("M+ 2m"
-                               :size 13
-                               :weight light
-                               :width normal
-                               :slant normal
-                               :powerline-scale 1.4)
+                              :size 13
+                              :weight light
+                              :width normal
+                              :slant normal
+                              :powerline-scale 1.4)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -164,6 +166,15 @@ before layers configuration."
   (setq whitespace-style '(face empty tabs lines-tail trailing))
   (setq org-agenda-files (list "~/org/*.org"))
   ;; (setq-default dotspacemacs-configuration-layers '(elm))
+
+  ;; cider don't switch to error buffer on error
+  (setq cider-auto-select-error-buffer nil)
+
+  ;; don't show it
+  (setq cider-show-error-buffer 'except-in-repl)
+
+
+  (desktop-save-mode 1)
   )
 
 (defun dotspacemacs/config ()
@@ -196,6 +207,9 @@ before layers configuration."
   ;; automatically wrap words past the fill column
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
+
+  (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
+
   (fancy-battery-mode 1)
   ;; (auto-fill-mode t)
   ;; company mode in alchemist mode
@@ -204,9 +218,11 @@ before layers configuration."
   (add-hook 'alchemist-mode-hook 'company-mode)
   (add-hook 'alchemist-mode-hook 'auto-complete-mode)
 
-  ;; disable selection of error buffer when displayed
-  (setq cider-auto-select-error-buffer nil)
+  ;; crap ruby indent
+  (setq ruby-deep-indent-paren nil)
 
+
+  ;; (require 'alda-mode)
   ;; chruby
   ;; (require 'chruby)
   ;; (chruby "ruby-2.0.0")
@@ -228,7 +244,7 @@ before layers configuration."
   (while (re-search-forward "<a id.*<\/a>" nil t)
     (replace-match "")))
 
-(defun replace-double-spaces-with-single (beg end)
+(defun ck/replace-double-spaces-with-single (beg end)
   "replace double spaces with single space"
   (interactive "r")
   (format-replace-strings '(("  " . " "))
@@ -243,12 +259,14 @@ before layers configuration."
 (defun ck/prep-blog (beg end)
   "prep the markdown document for the blog"
   (interactive "r")
-  (let '((b 1)
-         (e (buffer-end 1)))
+  (let ((b 1)
+        (e (buffer-end 1)))
     (ck/replace-smart-quotes b e)
     (ck/replace-double-spaces-with-single b e)
-    (ck/remove-org-md-h2 b e)
+    (ck/remove-md-h2 b e)
     (ck/remove-org-links b e)))
+
+
 
 ;; (elm :variables
 ;;      elm-reactor-port "3000"          ; default 8000
@@ -266,7 +284,10 @@ before layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(cider-default-repl-command "boot")
+ '(cider-show-error-buffer (quote except-in-repl))
  '(js-indent-level 2)
+ '(org-agenda-files nil)
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
