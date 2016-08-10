@@ -12,6 +12,9 @@ syntax on
 set nu
 filetype plugin indent on     " required!
 
+" true color highlighting
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
 " leader
 :let mapleader = ","
 
@@ -33,6 +36,7 @@ hi clear SpellBad
 hi SpellBad cterm=underline
 
 colorscheme gruvbox
+set background=dark    " Setting dark mode
 
 " set ambiwidth=double
 set noshowmode
