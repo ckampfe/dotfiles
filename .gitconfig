@@ -1,10 +1,11 @@
 [user]
 	name = Clark Kampfe
 	email = clark.kampfe@gmail.com
+	signingkey = 11AA1A54
 [core]
 	autocrlf = input
 	safecrlf = true
-	editor = vim
+	editor = /usr/local/bin/nvim
 
 [alias]
 	co = checkout
