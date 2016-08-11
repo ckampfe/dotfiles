@@ -73,7 +73,7 @@ object imports {
   def scalaTags() =
     repl.load("""
       // https://lihaoyi.github.io/scalatags/
-      load.ivy("com.lihaoyi" %% "scalatags" % "0.5.5")
+      load.ivy("com.lihaoyi" %% "scalatags" % "0.6.0")
       @
       import scalatags.Text.all._
     """)
