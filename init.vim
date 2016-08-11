@@ -118,4 +118,4 @@ au BufNewFile,BufRead *.q set filetype=hive expandtab
 au BufNewFile,BufRead *.clj,*.boot set filetype=clojure expandtab
 
 " for .sc (ammonite scala)
-au BufNewFile,BufRead *.sc set filetype=scala expandtab
+au BufNewFile,BufRead *.sc,*.scala set filetype=scala expandtab
