@@ -110,7 +110,7 @@ object imports {
   def http4s() =
     repl.load("""
       // http://http4s.org/
-      load.ivy("org.http4s" %% "http4s-blaze-client" % "0.14.1a")
+      load.ivy("org.http4s" %% "http4s-blaze-client" % "0.14.2a")
       @
       import org.http4s.Http4s._
     """)
