@@ -132,6 +132,15 @@ object imports {
       import cats.std.all._
       import cats.implicits._
     """)
+
+  def fs2() =
+    repl.load("""
+    // https://github.com/functional-streams-for-scala/fs2
+    load.ivy("co.fs2" %% "fs2-core" % "0.9.0-M6")
+    load.ivy("co.fs2" %% "fs2-io" % "0.9.0-M6")
+    @
+    import fs2.{io, text, Task}
+    """)
 }
 
 def linesOfIn(what: String, where: Path = wd) =
