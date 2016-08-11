@@ -23,7 +23,7 @@ import scala.math._
 // general
 object predef {
   val location =
-    (dotfiles.location)/"predef.scala"
+    (dotfiles.location)/"predef.sc"
   def edit = %nvim(location)
   def cat  = %%cat(location)
   def view = %cat(location)
