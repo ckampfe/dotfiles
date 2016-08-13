@@ -88,7 +88,7 @@ if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
   source /usr/local/share/chruby/chruby.sh
 fi
 source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby ruby-2.0
+chruby ruby-2.3
 
 # go
 export GOPATH=$HOME/.go
