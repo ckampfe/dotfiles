@@ -1,6 +1,8 @@
 #!/usr/bin/env amm
 
 import java.io.File
+import java.nio.file.FileAlreadyExistsException
+import scala.util.{Try,Success,Failure}
 import $ivy.`com.lihaoyi::ammonite-ops:0.7.0`, ammonite.ops._
 
 case class Dotfile(
@@ -57,7 +59,9 @@ val linkPairs = for {
   fullSourcePath = dotfilesSourcePath / file.name
 } yield (fullSourcePath, fullTargetPath)
 
-linkPairs.foreach { case (source, target) =>
-  ln.s(source, target)
-  println(s"linked $source to $target")
-}
+linkPairs.map { case (source, target) =>
+  Try(ln.s(source, target)) match {
+    case Success(s) => s"linked $source to $target"
+    case Failure(e: FileAlreadyExistsException) => e
+  }
+}.foreach(println)
