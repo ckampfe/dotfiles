@@ -98,29 +98,13 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin
 # python/anaconda
 export DYLD_FALLBACK_LIBRARY_PATH=$HOME/anaconda/lib/:$DYLD_FALLBACK_LIBRARY_PATH
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+  . "${HOME}/.gpg-agent-info"
+  export GPG_AGENT_INFO
+  export SSH_AUTH_SOCK
+fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+GPG_TTY=$(tty)
+export GPG_TTY
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-#
-
-# Docker
-# export DOCKER_HOST=tcp://192.168.59.103:2376
-# export DOCKER_CERT_PATH=/Users/clark/.boot2docker/certs/boot2docker-vm
-# export DOCKER_TLS_VERIFY=1
-
-# docker
-export DOCKER_HOST=tcp://192.168.59.103:2375
-unset DOCKER_CERT_PATH
-unset DOCKER_TLS_VERIFY
