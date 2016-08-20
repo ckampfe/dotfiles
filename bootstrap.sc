@@ -3,13 +3,14 @@
 import java.io.File
 import java.nio.file.FileAlreadyExistsException
 import scala.util.{Try,Success,Failure}
-import $ivy.`com.lihaoyi::ammonite-ops:0.7.0`, ammonite.ops._
+import $ivy.`com.lihaoyi::ammonite-ops:0.7.4`, ammonite.ops._
 
 case class Dotfile(
   name: String,
   subpath: Option[RelPath] = None,
   linkname: Option[String] = None
 )
+
 case class DotfileGroup(
   name: String,
   files: Vector[Dotfile],
@@ -38,7 +39,7 @@ val dotfileGroups = Vector[DotfileGroup](
   DotfileGroup(
     name = "usr/local/bin",
     Vector(
-      Dotfile("ammonite-repl-0.7.0", linkname = Some("amm")),
+      Dotfile("ammonite-repl-0.7.4.jar", linkname = Some("amm")),
       Dotfile("clj-new-script"),
       Dotfile("sbt-new"),
       Dotfile("sbt-new-script")
@@ -58,6 +59,10 @@ val linkPairs = for {
     ./(RelPath(file.linkname.getOrElse(file.name))) // if there is an optional linkname, use it
   fullSourcePath = dotfilesSourcePath / file.name
 } yield (fullSourcePath, fullTargetPath)
+
+/*
+mkdir -p ~/.vim/{ftdetect,indent,syntax} && for d in ftdetect indent syntax ; do wget -O ~/.vim/$d/scala.vim https://raw.githubusercontent.com/derekwyatt/vim-scala/master/$d/scala.vim; done
+ */
 
 linkPairs.map { case (source, target) =>
   Try(ln.s(source, target)) match {
