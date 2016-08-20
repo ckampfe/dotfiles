@@ -1,8 +1,6 @@
 /* IVY */
 
-// version is static here because $ivy does not support
-// runtime interpolation
-import $ivy.`com.lihaoyi::ammonite-shell:0.7.0`
+interp.load.ivy("com.lihaoyi" %% "ammonite-shell" % ammonite.Constants.version)
 
 @
 
@@ -71,7 +69,7 @@ object youtube {
 
 object imports {
   def scalaTags() =
-    repl.load("""
+    interp.load("""
       // https://lihaoyi.github.io/scalatags/
       load.ivy("com.lihaoyi" %% "scalatags" % "0.6.0")
       @
@@ -79,7 +77,7 @@ object imports {
     """)
 
   def kantan() =
-    repl.load("""
+    interp.load("""
       // https://github.com/nrinaudo/kantan.csv
       val kantanCsvVersion = "0.1.11"
       load.ivy("com.nrinaudo" %% "kantan.csv" % kantanCsvVersion)
@@ -94,7 +92,7 @@ object imports {
     """)
 
   def circe() =
-    repl.load("""
+    interp.load("""
       // https://github.com/travisbrown/circe
       val circeVersion = "0.5.0-M2"
       load.ivy("io.circe" %% "circe-core" % circeVersion)
@@ -108,7 +106,7 @@ object imports {
     """)
 
   def http4s() =
-    repl.load("""
+    interp.load("""
       // http://http4s.org/
       load.ivy("org.http4s" %% "http4s-blaze-client" % "0.14.2a")
       @
@@ -116,7 +114,7 @@ object imports {
     """)
 
   def shapeless() =
-    repl.load("""
+    interp.load("""
       // https://github.com/milessabin/shapeless
       load.ivy("com.chuusai" %% "shapeless" % "2.3.1")
       @
@@ -124,7 +122,7 @@ object imports {
     """)
 
   def cats() =
-    repl.load("""
+    interp.load("""
       // https://github.com/non/cats
       load.ivy("org.typelevel" %% "cats" % "0.6.1")
       @
@@ -134,7 +132,7 @@ object imports {
     """)
 
   def fs2() =
-    repl.load("""
+    interp.load("""
     // https://github.com/functional-streams-for-scala/fs2
     load.ivy("co.fs2" %% "fs2-core" % "0.9.0-M6")
     load.ivy("co.fs2" %% "fs2-io" % "0.9.0-M6")
