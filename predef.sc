@@ -71,7 +71,7 @@ object imports {
   def scalaTags() =
     interp.load("""
       // https://lihaoyi.github.io/scalatags/
-      load.ivy("com.lihaoyi" %% "scalatags" % "0.6.0")
+      interp.load.ivy("com.lihaoyi" %% "scalatags" % "0.6.0")
       @
       import scalatags.Text.all._
     """)
@@ -79,11 +79,11 @@ object imports {
   def kantan() =
     interp.load("""
       // https://github.com/nrinaudo/kantan.csv
-      val kantanCsvVersion = "0.1.11"
-      load.ivy("com.nrinaudo" %% "kantan.csv" % kantanCsvVersion)
-      load.ivy("com.nrinaudo" %% "kantan.csv-cats" % kantanCsvVersion)
-      load.ivy("com.nrinaudo" %% "kantan.csv-generic" % kantanCsvVersion)
-      load.ivy("com.nrinaudo" %% "kantan.csv-jackson" % kantanCsvVersion)
+      val kantanCsvVersion = "0.1.13"
+      interp.load.ivy("com.nrinaudo" %% "kantan.csv" % kantanCsvVersion)
+      interp.load.ivy("com.nrinaudo" %% "kantan.csv-cats" % kantanCsvVersion)
+      interp.load.ivy("com.nrinaudo" %% "kantan.csv-generic" % kantanCsvVersion)
+      interp.load.ivy("com.nrinaudo" %% "kantan.csv-jackson" % kantanCsvVersion)
       @
       import java.io.File
       import kantan.csv._
@@ -95,9 +95,9 @@ object imports {
     interp.load("""
       // https://github.com/travisbrown/circe
       val circeVersion = "0.5.0-M2"
-      load.ivy("io.circe" %% "circe-core" % circeVersion)
-      load.ivy("io.circe" %% "circe-generic" % circeVersion)
-      load.ivy("io.circe" %% "circe-parser" % circeVersion)
+      interp.load.ivy("io.circe" %% "circe-core" % circeVersion)
+      interp.load.ivy("io.circe" %% "circe-generic" % circeVersion)
+      interp.load.ivy("io.circe" %% "circe-parser" % circeVersion)
       @
       import io.circe._
       import io.circe.generic.auto._
@@ -108,7 +108,7 @@ object imports {
   def http4s() =
     interp.load("""
       // http://http4s.org/
-      load.ivy("org.http4s" %% "http4s-blaze-client" % "0.14.2a")
+      interp.load.ivy("org.http4s" %% "http4s-blaze-client" % "0.14.2a")
       @
       import org.http4s.Http4s._
     """)
@@ -116,7 +116,7 @@ object imports {
   def shapeless() =
     interp.load("""
       // https://github.com/milessabin/shapeless
-      load.ivy("com.chuusai" %% "shapeless" % "2.3.1")
+      interp.load.ivy("com.chuusai" %% "shapeless" % "2.3.1")
       @
       import shapeless._
     """)
@@ -124,7 +124,7 @@ object imports {
   def cats() =
     interp.load("""
       // https://github.com/non/cats
-      load.ivy("org.typelevel" %% "cats" % "0.6.1")
+      interp.load.ivy("org.typelevel" %% "cats" % "0.6.1")
       @
       import cats._
       import cats.std.all._
@@ -134,8 +134,8 @@ object imports {
   def fs2() =
     interp.load("""
     // https://github.com/functional-streams-for-scala/fs2
-    load.ivy("co.fs2" %% "fs2-core" % "0.9.0-M6")
-    load.ivy("co.fs2" %% "fs2-io" % "0.9.0-M6")
+    interp.load.ivy("co.fs2" %% "fs2-core" % "0.9.0-M6")
+    interp.load.ivy("co.fs2" %% "fs2-io" % "0.9.0-M6")
     @
     import fs2.{io, text, Task}
     """)
