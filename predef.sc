@@ -147,4 +147,4 @@ def linesOfIn(what: String, where: Path = wd) =
     .filter(file => file.ext == what)
     .map(file => (file.name, (read.lines(file).size)))
 
-repl.prompt.bind( s"""[${wd.toString}]\nclark@ """)
+    repl.prompt.bind( s"""[${wd.toString}]\nclark@> """)
