@@ -116,7 +116,7 @@ object imports {
   def shapeless() =
     interp.load("""
       // https://github.com/milessabin/shapeless
-      interp.load.ivy("com.chuusai" %% "shapeless" % "2.3.1")
+      interp.load.ivy("com.chuusai" %% "shapeless" % "2.3.2")
       @
       import shapeless._
     """)
