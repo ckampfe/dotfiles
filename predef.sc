@@ -134,8 +134,8 @@ object imports {
   def fs2() =
     interp.load("""
     // https://github.com/functional-streams-for-scala/fs2
-    interp.load.ivy("co.fs2" %% "fs2-core" % "0.9.0-M6")
-    interp.load.ivy("co.fs2" %% "fs2-io" % "0.9.0-M6")
+    interp.load.ivy("co.fs2" %% "fs2-core" % "0.9.0-RC1")
+    interp.load.ivy("co.fs2" %% "fs2-io" % "0.9.0-RC1")
     @
     import fs2.{io, text, Task}
     """)
