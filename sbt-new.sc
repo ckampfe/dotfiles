@@ -2,6 +2,7 @@
 
 import ammonite.ops._
 
+@main
 def main(projectName: String = "", path: Path = cwd) = {
   if(projectName.isEmpty) {
     println("Usage: ./sbt-new project_name")
@@ -21,6 +22,7 @@ def main(projectName: String = "", path: Path = cwd) = {
 
 def makeDirs(projectDir: Path) = {
   mkdir!(projectDir/'src/'main/'scala)
+  mkdir!(projectDir/'src/'main/'scala/projectDir.name)
   mkdir!(projectDir/'src/'main/'resources)
   mkdir!(projectDir/'src/'test/'scala)
   mkdir!(projectDir/'src/'test/'resources)
@@ -30,7 +32,7 @@ def makeDirs(projectDir: Path) = {
 }
 
 def addSbtVersion(projectDir: Path) =
-  write(projectDir/'project/"build.properties", "sbt.version=0.13.11")
+  write(projectDir/'project/"build.properties", "sbt.version=0.13.12")
 
 def addSbtPlugins(projectDir: Path, sbtPlugins: Seq[String]) =
   write(projectDir/'project/"plugins.sbt", sbtPlugins.mkString("\n"))
@@ -45,12 +47,13 @@ def addBuildDotSbt(projectDir: Path, projectName: String) =
     |scalaVersion := "2.11.8"
     |
     |libraryDependencies ++= Seq(
-    |  "com.lihaoyi" %% "ammonite-ops" % "0.5.7"
+    |  "com.lihaoyi" %% "ammonite-ops" % "0.7.4",
+    |  "org.typelevel" %% "cats" % "0.6.1"
     |)
     |
     |scalacOptions ++= Seq(
     |  "-deprecation",
-    |  "-encoding", "UTF-8",       // yes, this is 2 args
+    |  "-encoding", "UTF-8", // yes, this is 2 args
     |  "-feature",
     |  "-language:existentials",
     |  "-language:higherKinds",
