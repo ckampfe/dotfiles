@@ -17,35 +17,41 @@ case class DotfileGroup(
   targetDir: Path
 )
 
-val dotfileGroups = Vector[DotfileGroup](
-  DotfileGroup(
-    name = "~",
-    Vector(
-      Dotfile(".spacemacs"),
-      Dotfile(".tmux.conf"),
-      Dotfile(".zshrc")
-    ),
-    root/'Users/'clarkkampfe
+val tilde = DotfileGroup(
+  name = "~",
+  Vector(
+    Dotfile(".spacemacs"),
+    Dotfile(".tmux.conf"),
+    Dotfile(".zshrc")
   ),
-  DotfileGroup(
-    name = ".config",
-    Vector(
-      Dotfile(
-        name = "init.vim",
-        subpath = Some(RelPath("nvim")))
-    ),
-    root/'Users/'clarkkampfe/".config"
+  root/'Users/'clarkkampfe
+)
+
+val dotConfig = DotfileGroup(
+  name = ".config",
+  Vector(
+    Dotfile(
+      name = "init.vim",
+      subpath = Some(RelPath("nvim")))
   ),
-  DotfileGroup(
-    name = "usr/local/bin",
-    Vector(
-      Dotfile("ammonite-repl-0.7.4.jar", linkname = Some("amm")),
-      Dotfile("clj-new-script"),
-      Dotfile("sbt-new"),
-      Dotfile("sbt-new-script")
-    ),
-    root/'usr/'local/'bin
-  )
+  root/'Users/'clarkkampfe/".config"
+)
+
+val usrLocalBin = DotfileGroup(
+  name = "usr/local/bin",
+  Vector(
+    Dotfile("ammonite-repl-0.7.4.jar", linkname = Some("amm")),
+    Dotfile("clj-new-script"),
+    Dotfile("sbt-new"),
+    Dotfile("sbt-new-script")
+  ),
+  root/'usr/'local/'bin
+)
+
+val dotfileGroups = Vector(
+  tilde,
+  dotConfig,
+  usrLocalBin
 )
 
 val dotfilesSourcePath = root / 'Users / 'clarkkampfe / 'code / 'personal / 'dotfiles
@@ -64,9 +70,27 @@ val linkPairs = for {
 mkdir -p ~/.vim/{ftdetect,indent,syntax} && for d in ftdetect indent syntax ; do wget -O ~/.vim/$d/scala.vim https://raw.githubusercontent.com/derekwyatt/vim-scala/master/$d/scala.vim; done
  */
 
+/*
+ make /usr/local/bin files executable
+ with `chmod +x`
+ */
+usrLocalBin.files.map { file =>
+  val fullSourcePath = dotfilesSourcePath / file.name
+  Try {
+    %%.chmod("+x", fullSourcePath)(cwd)
+  } match {
+    case Success(s) => s"made $fullSourcePath executable"
+    case Failure(e: ShelloutException) => e
+  }
+}.foreach(println)
+
+/*
+symlink files
+ */
 linkPairs.map { case (source, target) =>
   Try(ln.s(source, target)) match {
     case Success(s) => s"linked $source to $target"
     case Failure(e: FileAlreadyExistsException) => e
   }
 }.foreach(println)
+
