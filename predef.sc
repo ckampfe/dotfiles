@@ -124,10 +124,10 @@ object imports {
   def cats() =
     interp.load("""
       // https://github.com/non/cats
-      interp.load.ivy("org.typelevel" %% "cats" % "0.6.1")
+      interp.load.ivy("org.typelevel" %% "cats" % "0.7.0")
       @
       import cats._
-      import cats.std.all._
+      import cats.instances.all._
       import cats.implicits._
     """)
 
