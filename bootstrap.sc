@@ -40,7 +40,6 @@ val dotConfig = DotfileGroup(
 val usrLocalBin = DotfileGroup(
   name = "usr/local/bin",
   Vector(
-    Dotfile("ammonite-repl-0.7.4.jar", linkname = Some("amm")),
     Dotfile("clj-new-script"),
     Dotfile("sbt-new"),
     Dotfile("sbt-new-script")
