@@ -79,7 +79,7 @@ object imports {
   def kantan() =
     interp.load("""
       // https://github.com/nrinaudo/kantan.csv
-      val kantanCsvVersion = "0.1.13"
+      val kantanCsvVersion = "0.1.14"
       interp.load.ivy("com.nrinaudo" %% "kantan.csv" % kantanCsvVersion)
       interp.load.ivy("com.nrinaudo" %% "kantan.csv-cats" % kantanCsvVersion)
       interp.load.ivy("com.nrinaudo" %% "kantan.csv-generic" % kantanCsvVersion)
@@ -94,7 +94,7 @@ object imports {
   def circe() =
     interp.load("""
       // https://github.com/travisbrown/circe
-      val circeVersion = "0.5.0-M2"
+      val circeVersion = "0.5.2"
       interp.load.ivy("io.circe" %% "circe-core" % circeVersion)
       interp.load.ivy("io.circe" %% "circe-generic" % circeVersion)
       interp.load.ivy("io.circe" %% "circe-parser" % circeVersion)
@@ -124,7 +124,7 @@ object imports {
   def cats() =
     interp.load("""
       // https://github.com/non/cats
-      interp.load.ivy("org.typelevel" %% "cats" % "0.7.0")
+      interp.load.ivy("org.typelevel" %% "cats" % "0.7.2")
       @
       import cats._
       import cats.instances.all._
@@ -134,8 +134,8 @@ object imports {
   def fs2() =
     interp.load("""
     // https://github.com/functional-streams-for-scala/fs2
-    interp.load.ivy("co.fs2" %% "fs2-core" % "0.9.0-RC1")
-    interp.load.ivy("co.fs2" %% "fs2-io" % "0.9.0-RC1")
+    interp.load.ivy("co.fs2" %% "fs2-core" % "0.9.1")
+    interp.load.ivy("co.fs2" %% "fs2-io" % "0.9.1")
     @
     import fs2.{io, text, Task}
     """)
