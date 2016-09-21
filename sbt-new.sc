@@ -5,7 +5,7 @@ import ammonite.ops._
 @main
 def main(projectName: String = "", path: Path = cwd) = {
   if(projectName.isEmpty) {
-    println("Usage: ./sbt-new project_name")
+    println("Usage: ./sbt-new.sc project_name")
     System.exit(1)
   }
 
@@ -47,8 +47,8 @@ def addBuildDotSbt(projectDir: Path, projectName: String) =
     |scalaVersion := "2.11.8"
     |
     |libraryDependencies ++= Seq(
-    |  "com.lihaoyi" %% "ammonite-ops" % "0.7.4",
-    |  "org.typelevel" %% "cats" % "0.6.1"
+    |  "com.lihaoyi" %% "ammonite-ops" % "0.7.7",
+    |  "org.typelevel" %% "cats" % "0.7.2"
     |)
     |
     |scalacOptions ++= Seq(
