@@ -37,6 +37,7 @@ def brew = {
 }
 
 object git {
+  def clone(url: String) = %git("clone", url)
   def status = %git("status")
   def diff   = %git("diff")
   def commit = %git("commit", "-vS")
@@ -153,10 +154,15 @@ object imports {
     """)
 }
 
-def linesOfIn(what: String, where: Path = wd) =
-  (ls.rec!(where))
+def linesOfIn(extension: String, path: Path = wd) =
+  filesLines(extension, path).foldLeft(0) { case (total, (_, n)) =>
+    total + n
+  }
+
+def filesLines(extension: String, path: Path = wd) =
+  (ls.rec!(path))
     .filter(_.isFile)
-    .filter(file => file.ext == what)
+    .filter(file => file.ext == extension)
     .map(file => (file.name, (read.lines(file).size)))
 
-    repl.prompt.bind( s"""[${wd.toString}]\nclark@> """)
+repl.prompt.bind( s"""[${wd.toString}]\nclark@> """)
