@@ -131,6 +131,18 @@ object imports {
       import cats.implicits._
     """)
 
+  def monix() =
+    interp.load("""
+      // https://github.com/monixio/monix
+      interp.load.ivy("io.monix" %% "monix" % "2.0.1")
+      interp.load.ivy("io.monix" %% "monix-cats" % "2.0.1")
+      @
+      import monix.execution.Scheduler.Implicits.global
+      import monix.execution.CancelableFuture
+      import monix.eval.Task
+      import scala.util.{Success, Failure}
+    """)
+
   def fs2() =
     interp.load("""
     // https://github.com/functional-streams-for-scala/fs2
