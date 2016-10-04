@@ -73,23 +73,24 @@ mkdir -p ~/.vim/{ftdetect,indent,syntax} && for d in ftdetect indent syntax ; do
  make /usr/local/bin files executable
  with `chmod +x`
  */
-usrLocalBin.files.map { file =>
+usrLocalBin.files.map { file ⇒
   val fullSourcePath = dotfilesSourcePath / file.name
   Try {
     %%.chmod("+x", fullSourcePath)(cwd)
   } match {
-    case Success(s) => s"made $fullSourcePath executable"
-    case Failure(e: ShelloutException) => e
+    case Success(s) ⇒ s"made $fullSourcePath executable"
+    case Failure(e: ShelloutException) ⇒ e
   }
 }.foreach(println)
 
 /*
 symlink files
  */
-linkPairs.map { case (source, target) =>
+
+linkPairs.map { case (source, target) ⇒
   Try(ln.s(source, target)) match {
-    case Success(s) => s"linked $source to $target"
-    case Failure(e: FileAlreadyExistsException) => e
+    case Success(s) ⇒ s"linked $source to $target"
+    case Failure(e: FileAlreadyExistsException) ⇒ e
   }
 }.foreach(println)
 
