@@ -156,11 +156,19 @@ object imports {
 
   def fs2() =
     interp.load("""
-    // https://github.com/functional-streams-for-scala/fs2
-    interp.load.ivy("co.fs2" %% "fs2-core" % "0.9.1")
-    interp.load.ivy("co.fs2" %% "fs2-io" % "0.9.1")
-    @
-    import fs2.{io, text, Task}
+      // https://github.com/functional-streams-for-scala/fs2
+      interp.load.ivy("co.fs2" %% "fs2-core" % "0.9.1")
+      interp.load.ivy("co.fs2" %% "fs2-io" % "0.9.1")
+      @
+      import fs2.{io, text, Task}
+    """)
+
+  def fastparse() =
+    interp.load("""
+      // http://www.lihaoyi.com/fastparse/
+      interp.load.ivy("com.lihaoyi" %% "fastparse" % "0.4.1")
+      @
+      import fastparse.all._
     """)
 }
 
