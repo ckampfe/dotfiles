@@ -31,9 +31,19 @@ object dotfiles {
   val location = home/'code/'personal/'dotfiles
 }
 
-def brew = {
-  %brew("update")
-  %brew("upgrade")
+object brew {
+  def apply() = {
+    update()
+    upgrade()
+  }
+
+  def update() = %brew("update")
+  def upgrade() = %brew("upgrade")
+  def install(lib: String) = %brew("install", lib)
+
+  object cask {
+    def install(lib: String) = %brew("cask", "install", lib)
+  }
 }
 
 object git {
