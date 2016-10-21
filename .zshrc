@@ -2,8 +2,8 @@
 export ZSH=$HOME/.oh-my-zsh
 export TERM=screen-256color
 
-source ~/antigen.zsh
-source /usr/local/share/zsh/site-functions/_aws
+source $(brew --prefix)/share/antigen/antigen.zsh
+# source /usr/local/share/zsh/site-functions/_aws
 antigen use oh-my-zsh
 
 antigen-bundle git
@@ -25,7 +25,7 @@ antigen apply
 # null out the RPROMPT because we're showing git info on the regular PROMPT
 RPROMPT=''
 
-PROMPT="[%{$fg[$NCOLOR]%}%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]""$(git_prompt_info)"$'\n'"$fg[blue]%B%n%b%(!.#.$)> "
+PROMPT="[%{$fg[$NCOLOR]%}%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]"'$(git_prompt_info)'$'\n'"$fg[blue]%B%n%b%(!.#.$)> "
 
 
 alias tmux="TERM=xterm-256color tmux"
