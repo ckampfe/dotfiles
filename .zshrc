@@ -6,13 +6,6 @@ source $(brew --prefix)/share/antigen/antigen.zsh
 # source /usr/local/share/zsh/site-functions/_aws
 antigen use oh-my-zsh
 
-antigen-bundle git
-antigen-bundle heroku
-antigen-bundle command-not-found
-antigen-bundle brew
-antigen-bundle brew-cask
-antigen-bundle osx
-
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 
@@ -27,7 +20,6 @@ RPROMPT=''
 
 PROMPT="[%{$fg[$NCOLOR]%}%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]"'$(git_prompt_info)'$'\n'"$fg[blue]%B%n%b%(!.#.$)> "
 
-
 alias tmux="TERM=xterm-256color tmux"
 alias be='bundle exec '
 alias berc='bundle exec rake console'
@@ -35,7 +27,6 @@ alias mylocalip='ifconfig | grep 192'
 alias v='vim '
 alias vim='nvim '
 alias e='emacs '
-# alias ls='ls -Glah ' # color
 alias diff='colordiff '
 alias zshconfig="vim ~/.zshrc"
 alias youp3="youtube-dl -x --audio-format mp3 "
@@ -65,22 +56,11 @@ alias get='git '
 alias mc='mix compile'
 alias mr='mix run'
 
-# shell mode to vi
-# bindkey -v
-
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(osx brew ruby rails heroku github copydir last-working-dir)
-
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin"
-export PATH=~/anaconda/bin:"$PATH"
-# export PATH="/usr/local/openresty/nginx/sbin:$PATH"
 
 export MANPATH="/usr/local/man:$MANPATH"
 export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # ruby
 # look for rubies in ~/.rubies
@@ -89,15 +69,6 @@ if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
 fi
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 chruby ruby-2.3
-
-# go
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
-
-# python/anaconda
-export DYLD_FALLBACK_LIBRARY_PATH=$HOME/anaconda/lib/:$DYLD_FALLBACK_LIBRARY_PATH
-
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
   . "${HOME}/.gpg-agent-info"
