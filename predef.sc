@@ -105,7 +105,7 @@ object imports {
   def circe() =
     interp.load("""
       // https://github.com/travisbrown/circe
-      val circeVersion = "0.5.2"
+      val circeVersion = "0.5.3"
       interp.load.ivy("io.circe" %% "circe-core" % circeVersion)
       interp.load.ivy("io.circe" %% "circe-generic" % circeVersion)
       interp.load.ivy("io.circe" %% "circe-parser" % circeVersion)
