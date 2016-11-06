@@ -3,12 +3,12 @@
 import java.io.File
 import java.nio.file.FileAlreadyExistsException
 import scala.util.{Try,Success,Failure}
-import $ivy.`com.lihaoyi::ammonite-ops:0.7.7`, ammonite.ops._
+import $ivy.`com.lihaoyi::ammonite-ops:0.7.8`, ammonite.ops._
 
 case class Dotfile(
   name: String,
   subpath: Option[RelPath] = None,
-  linkname: Option[String] = None
+  linkName: Option[String] = None
 )
 
 case class DotfileGroup(
@@ -41,7 +41,7 @@ val usrLocalBin = DotfileGroup(
   name = "usr/local/bin",
   Vector(
     Dotfile("clj-new-script"),
-    Dotfile("sbt-new"),
+    Dotfile("sbt-new.sc", linkName = Some("sbt-new")),
     Dotfile("sbt-new-script")
   ),
   root/'usr/'local/'bin
@@ -61,12 +61,12 @@ val linkPairs = for {
   fullTargetPath =
     dotfileGroup.targetDir                          // the top level target directory
     ./(file.subpath.getOrElse(empty))               // if there is an optional subpath, use it
-    ./(RelPath(file.linkname.getOrElse(file.name))) // if there is an optional linkname, use it
+    ./(RelPath(file.linkName.getOrElse(file.name))) // if there is an optional linkName, use it
   fullSourcePath = dotfilesSourcePath / file.name
 } yield (fullSourcePath, fullTargetPath)
 
 /*
-mkdir -p ~/.vim/{ftdetect,indent,syntax} && for d in ftdetect indent syntax ; do wget -O ~/.vim/$d/scala.vim https://raw.githubusercontent.com/derekwyatt/vim-scala/master/$d/scala.vim; done
+mkdir -p ~/.vim/{ftdetect,indent,syntax} && for d in ftdetect indent syntax ; do wget -O ~/.config/.nvim/$d/scala.vim https://raw.githubusercontent.com/derekwyatt/vim-scala/master/$d/scala.vim; done
  */
 
 /*
