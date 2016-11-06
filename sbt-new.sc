@@ -32,7 +32,7 @@ def makeDirs(projectDir: Path) = {
 }
 
 def addSbtVersion(projectDir: Path) =
-  write(projectDir/'project/"build.properties", "sbt.version=0.13.12")
+  write(projectDir/'project/"build.properties", "sbt.version=0.13.13")
 
 def addSbtPlugins(projectDir: Path, sbtPlugins: Seq[String]) =
   write(projectDir/'project/"plugins.sbt", sbtPlugins.mkString("\n"))
@@ -47,8 +47,8 @@ def addBuildDotSbt(projectDir: Path, projectName: String) =
     |scalaVersion := "2.11.8"
     |
     |libraryDependencies ++= Seq(
-    |  "com.lihaoyi" %% "ammonite-ops" % "0.7.7",
-    |  "org.typelevel" %% "cats" % "0.7.2"
+    |  "com.lihaoyi" %% "ammonite-ops" % "0.7.8",
+    |  "org.typelevel" %% "cats" % "0.8.0"
     |)
     |
     |scalacOptions ++= Seq(
