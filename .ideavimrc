@@ -1,0 +1,2 @@
+" jk to ESC
+:imap jk <Esc>
