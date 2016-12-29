@@ -3,7 +3,7 @@
 import java.io.File
 import java.nio.file.FileAlreadyExistsException
 import scala.util.{Try,Success,Failure}
-import $ivy.`com.lihaoyi::ammonite-ops:0.7.8`, ammonite.ops._
+import $ivy.`com.lihaoyi::ammonite-ops:0.8.1`, ammonite.ops._
 
 case class Dotfile(
   name: String,
@@ -19,32 +19,34 @@ case class DotfileGroup(
 
 val tilde = DotfileGroup(
   name = "~",
-  Vector(
+  files = Vector(
     Dotfile(".spacemacs"),
     Dotfile(".tmux.conf"),
-    Dotfile(".zshrc")
+    Dotfile(".zshrc"),
+    Dotfile(".hyper.js"),
+    Dotfile(".ideavimrc")
   ),
-  root/'Users/'clarkkampfe
+  targetDir = home
 )
 
 val dotConfig = DotfileGroup(
   name = ".config",
-  Vector(
+  files = Vector(
     Dotfile(
       name = "init.vim",
       subpath = Some(RelPath("nvim")))
   ),
-  root/'Users/'clarkkampfe/".config"
+  targetDir = home / ".config"
 )
 
 val usrLocalBin = DotfileGroup(
   name = "usr/local/bin",
-  Vector(
+  files = Vector(
     Dotfile("clj-new-script"),
     Dotfile("sbt-new.sc", linkName = Some("sbt-new")),
     Dotfile("sbt-new-script")
   ),
-  root/'usr/'local/'bin
+  targetDir = root / 'usr / 'local / 'bin
 )
 
 val dotfileGroups = Vector(
@@ -53,7 +55,7 @@ val dotfileGroups = Vector(
   usrLocalBin
 )
 
-val dotfilesSourcePath = root / 'Users / 'clarkkampfe / 'code / 'personal / 'dotfiles
+val dotfilesSourcePath = home / 'code / 'dotfiles
 
 val linkPairs = for {
   dotfileGroup <- dotfileGroups
