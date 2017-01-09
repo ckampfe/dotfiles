@@ -30,6 +30,7 @@
      osx
      ruby
      ruby-on-rails
+     rust
      scala
      shell
      sql
