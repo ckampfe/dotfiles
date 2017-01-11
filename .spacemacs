@@ -12,7 +12,6 @@
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     html
      csv
      javascript
      auto-completion
@@ -24,6 +23,7 @@
      erlang
      git
      github
+     html
      ivy
      markdown
      org
@@ -207,21 +207,14 @@ before layers configuration."
   (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
 
   (fancy-battery-mode 1)
-  ;; (auto-fill-mode t)
-  ;; company mode in alchemist mode
-  ;; for some reason alchemist isn't loading, add manual hook
+
+  ;; elixir
   (add-hook 'elixir-mode-hook 'alchemist-mode)
   (add-hook 'alchemist-mode-hook 'company-mode)
   (add-hook 'alchemist-mode-hook 'auto-complete-mode)
 
   ;; crap ruby indent
   (setq ruby-deep-indent-paren nil)
-
-
-  ;; (require 'alda-mode)
-  ;; chruby
-  ;; (require 'chruby)
-  ;; (chruby "ruby-2.0.0")
 )
 
 ;; https://superuser.com/questions/603421/how-to-remove-smart-quotes-in-copy-paste
@@ -261,12 +254,6 @@ before layers configuration."
     (ck/replace-double-spaces-with-single b e)
     (ck/remove-md-h2 b e)
     (ck/remove-org-links b e)))
-
-
-
-;; (elm :variables
-;;      elm-reactor-port "3000"          ; default 8000
-;;      elm-reactor-address "0.0.0.0") ; default 127.0.0.1
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
