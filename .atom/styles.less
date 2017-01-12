@@ -1,0 +1,115 @@
+/*
+ * Your Stylesheet
+ *
+ * This stylesheet is loaded when Atom starts up and is reloaded automatically
+ * when it is changed and saved.
+ *
+ * Add your own CSS or Less to fully customize Atom.
+ * If you are unfamiliar with Less, you can read more about it here:
+ * http://lesscss.org
+ */
+
+
+@brand-pink: rgb(255, 149, 166);
+@bg-gray: rgb(251, 250, 249);
+
+atom-text-editor {
+  font: 'FiraCode-Retina'
+}
+
+atom-text-editor .line.cursor-line, :host .line.cursor-line {
+  background-color: rgba(208, 206, 204, 0.25);
+}
+
+atom-text-editor.vim-mode-plus.normal-mode,
+atom-text-editor.vim-mode-plus.operator-pending-mode,
+atom-text-editor.vim-mode-plus.visual-mode
+{
+  &, &.is-focused {
+    &::shadow, &
+    {
+      .cursor {
+        // cursor styles
+        background-color: @brand-pink;
+      }
+      .blink-off .cursor {
+        background-color: @brand-pink;
+        // cursor style while blinking (if you so desire)
+      }
+    }
+  }
+}
+
+atom-text-editor[mini].is-focused {
+  border-color: @brand-pink;
+  box-shadow: @brand-pink;
+  background-color: #ffffff;
+}
+
+atom-text-editor[mini] .cursor {
+  border-color: @brand-pink;
+}
+
+.tooltip.bottom .tooltip-arrow {
+  border-bottom-color: @brand-pink;
+}
+
+.tooltip .tooltip-inner {
+  background-color: @bg-gray;
+}
+
+atom-workspace {
+  background-color: @bg-gray;
+}
+
+.btn-group > .btn.selected, .btn-group > .btn.selected:first-child, .btn-group > .btn.selected:last-child {
+  background-color: @brand-pink;
+}
+
+.div .cursors .cursor {
+  background-color: @bg-gray;
+}
+
+.settings-view .setting-description {
+  color: #9c9c9c;
+}
+
+.settings-view .install-button {
+  background-color: @brand-pink;
+  background-image: linear-gradient(@brand-pink, @brand-pink);
+}
+
+.settings-view .install-button:focus, .settings-view .install-button:hover {
+  background-image: linear-gradient(@brand-pink, @brand-pink);
+}
+
+.tab-bar {
+  background-color: @bg-gray;
+}
+
+.tab-bar .tab .title {
+  background-color: @bg-gray;
+}
+
+.tab-bar .tab::before {
+  background-color: #c8c8c8;
+  width: 0;
+}
+
+.tree-view {
+  background-color: @bg-gray;
+}
+
+.tab-bar .tab .close-icon:hover {
+  color: white;
+  background-color: #c8c8c8;
+}
+
+.title-bar {
+  border-bottom: none;
+  background-color: @bg-gray;
+}
+
+.settings-view input[type="checkbox"]:active, .settings-view input[type="checkbox"]:checked {
+  background-color: @brand-pink;
+}
