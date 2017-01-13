@@ -6,11 +6,10 @@ import scala.util.{Try,Success,Failure}
 import $ivy.`com.lihaoyi::ammonite-ops:0.8.1`, ammonite.ops._
 
 case class Dotfile(
-  name: String,
+  name: RelPath,
   subpath: Option[RelPath] = None,
-  linkName: Option[String] = None
+  linkName: Option[RelPath] = None
 )
-
 case class DotfileGroup(
   name: String,
   files: Vector[Dotfile],
@@ -24,7 +23,9 @@ val tilde = DotfileGroup(
     Dotfile(".tmux.conf"),
     Dotfile(".zshrc"),
     Dotfile(".hyper.js"),
-    Dotfile(".ideavimrc")
+    Dotfile(".ideavimrc"),
+    Dotfile(".atom" / "config.cson"),
+    Dotfile(".atom" / "styles.less")
   ),
   targetDir = home
 )
@@ -63,7 +64,7 @@ val linkPairs = for {
   fullTargetPath =
     dotfileGroup.targetDir                          // the top level target directory
     ./(file.subpath.getOrElse(empty))               // if there is an optional subpath, use it
-    ./(RelPath(file.linkName.getOrElse(file.name))) // if there is an optional linkName, use it
+    ./(file.linkName.getOrElse(file.name)) // if there is an optional linkName, use it
   fullSourcePath = dotfilesSourcePath / file.name
 } yield (fullSourcePath, fullTargetPath)
 
@@ -95,4 +96,3 @@ linkPairs.map { case (source, target) ⇒
     case Failure(e: FileAlreadyExistsException) ⇒ e
   }
 }.foreach(println)
-
