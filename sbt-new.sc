@@ -47,8 +47,8 @@ def addBuildDotSbt(projectDir: Path, projectName: String) =
     |scalaVersion := "2.12.1"
     |
     |libraryDependencies ++= Seq(
-    |  "com.lihaoyi" %% "ammonite-ops" % "0.8.1",
-    |  "org.typelevel" %% "cats" % "0.8.1"
+    |  "com.lihaoyi" %% "ammonite-ops" % "0.8.2",
+    |  "org.typelevel" %% "cats" % "0.9.0"
     |)
     |
     |scalacOptions ++= Seq(
