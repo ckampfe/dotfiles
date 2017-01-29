@@ -105,7 +105,7 @@ object imports {
   def circe() =
     interp.load("""
       // https://github.com/travisbrown/circe
-      val circeVersion = "0.7.0-M1"
+      val circeVersion = "0.7.0"
       interp.load.ivy("io.circe" %% "circe-core" % circeVersion)
       interp.load.ivy("io.circe" %% "circe-generic" % circeVersion)
       interp.load.ivy("io.circe" %% "circe-parser" % circeVersion)
@@ -119,7 +119,7 @@ object imports {
   def http4s() =
     interp.load("""
       // http://http4s.org/
-      interp.load.ivy("org.http4s" %% "http4s-blaze-client" % "0.15.1a")
+      interp.load.ivy("org.http4s" %% "http4s-blaze-client" % "0.15.3a")
       @
       import org.http4s.Http4s._
     """)
@@ -134,8 +134,8 @@ object imports {
 
   def cats() =
     interp.load("""
-      // https://github.com/non/cats
-      interp.load.ivy("org.typelevel" %% "cats" % "0.8.1")
+      // https://github.com/typelevel/cats
+      interp.load.ivy("org.typelevel" %% "cats" % "0.9.0")
       @
       import cats._
       import cats.instances.all._
@@ -160,7 +160,7 @@ object imports {
       interp.load.ivy("co.fs2" %% "fs2-core" % "0.9.2")
       interp.load.ivy("co.fs2" %% "fs2-io" % "0.9.2")
       @
-      import fs2.{io, text, Task}
+      import fs2.{io, pipe, text, Stream, Task, Strategy}
     """)
 
   def fastparse() =
