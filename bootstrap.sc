@@ -3,7 +3,7 @@
 import java.io.File
 import java.nio.file.FileAlreadyExistsException
 import scala.util.{Try,Success,Failure}
-import $ivy.`com.lihaoyi::ammonite-ops:0.8.1`, ammonite.ops._
+import $ivy.`com.lihaoyi::ammonite-ops:0.8.2`, ammonite.ops._
 
 case class Dotfile(
   name: RelPath,
