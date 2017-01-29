@@ -2,12 +2,15 @@
 export ZSH=$HOME/.oh-my-zsh
 export TERM=screen-256color
 
+# source ~/.profile
+#
+fpath+=~/.zfunc
+
 source $(brew --prefix)/share/antigen/antigen.zsh
-# source /usr/local/share/zsh/site-functions/_aws
 antigen use oh-my-zsh
 
 # Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
+# antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
 antigen theme mh
@@ -21,6 +24,7 @@ RPROMPT=''
 PROMPT="[%{$fg[$NCOLOR]%}%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]"'$(git_prompt_info)'$'\n'"$fg[blue]%B%n%b%(!.#.$)> "
 
 alias tmux="TERM=xterm-256color tmux"
+alias ala="alacritty"
 alias be='bundle exec '
 alias berc='bundle exec rake console'
 alias mylocalip='ifconfig | grep 192'
@@ -35,11 +39,9 @@ alias youp3="youtube-dl -x --audio-format mp3 "
 alias scala='scala -Dscala.color '
 alias sbt-ass="sbt assembly"
 
-# docker
-alias dc='docker-compose '
-alias fu='fig up'
-
 # git
+alias gpom='echo "git pull origin master"; git pull origin master'
+alias gfrom='echo "git fetch; git rebase origin/master"; git fetch; git rebase origin/master'
 alias gs='git status '
 alias ga='git add '
 alias gb='git branch '
@@ -56,10 +58,10 @@ alias get='git '
 alias mc='mix compile'
 alias mr='mix run'
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin"
+export PATH="$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:$HOME/.local/bin"
 
-export MANPATH="/usr/local/man:$MANPATH"
-export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
+# export MANPATH="/usr/local/man:$MANPATH"
+# export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
 export EDITOR='nvim'
 
 # ruby
