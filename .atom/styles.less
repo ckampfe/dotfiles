@@ -10,6 +10,7 @@
  */
 
 
+@duo-blue: rgb(95,109,235);
 @brand-pink: rgb(255, 149, 166);
 @bg-gray: rgb(251, 250, 249);
 
@@ -19,6 +20,42 @@ atom-text-editor {
 
 atom-text-editor .line.cursor-line, :host .line.cursor-line {
   background-color: rgba(208, 206, 204, 0.25);
+}
+
+atom-text-editor::shadow .selection .region {
+  background-color: rgba(230, 230, 230, 0.26);
+}
+
+li.file.entry.list-item.status-modified {
+  color: @brand-pink;
+}
+
+li.list-nested-item.selected.status-modified > .list-item {
+  color: @brand-pink;
+}
+
+.list-tree li.list-nested-item.selected.status-modified > .list-item {
+  color: @brand-pink;
+}
+
+directory entry list-nested-item status-modified selected expanded {
+  color: @brand-pink;
+}
+
+.list-tree li.list-nested-item.status-modified > .list-item {
+  color: @brand-pink;
+}
+
+li.file.entry.list-item.status-added {
+  color: @duo-blue;
+}
+
+div.header.list-item {
+  color: @duo-blue;
+}
+
+.list-tree li.list-nested-item.status-added > .list-item {
+  color: @duo-blue;
 }
 
 atom-text-editor.vim-mode-plus.normal-mode,
@@ -40,6 +77,12 @@ atom-text-editor.vim-mode-plus.visual-mode
   }
 }
 
+atom-text-editor::shadow .is-focused .cursors .cursor {
+  opacity: 1;
+}
+
+
+
 atom-text-editor[mini].is-focused {
   border-color: @brand-pink;
   box-shadow: @brand-pink;
@@ -55,7 +98,8 @@ atom-text-editor[mini] .cursor {
 }
 
 .tooltip .tooltip-inner {
-  background-color: @bg-gray;
+  background-color: rgba(223, 217, 211, 0.85);
+  color: rgb(77, 66, 56);
 }
 
 atom-workspace {

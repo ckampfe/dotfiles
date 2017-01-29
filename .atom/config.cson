@@ -16,6 +16,9 @@
   editor:
     fontFamily: "FiraCode-Retina"
     fontSize: 12
+    preferredLineLength: 110
+    softWrap: true
+    softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "e9ea9b8e-0398-7f16-5681-a9d0525582f9"
   linter: {}
