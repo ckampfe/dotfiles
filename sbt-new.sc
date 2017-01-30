@@ -47,13 +47,16 @@ def addBuildDotSbt(projectDir: Path, projectName: String) =
     |scalaVersion := "2.12.1"
     |
     |libraryDependencies ++= Seq(
-    |  "com.lihaoyi" %% "ammonite-ops" % "0.8.2",
-    |  "org.typelevel" %% "cats" % "0.9.0"
+    |  "com.lihaoyi"   %% "ammonite-ops"  % "0.8.2",
+    |  "org.typelevel" %% "cats"          % "0.9.0",
+    |  "io.circe"      %% "circe-core"    % "0.7.0,
+    |  "io.circe"      %% "circe-generic" % "0.7.0",
+    |  "io.circe"      %% "circe-parser"  % "0.7.0"
     |)
     |
     |scalacOptions ++= Seq(
     |  "-deprecation",
-    |  "-encoding", "UTF-8", // yes, this is 2 args
+    |  "-encoding", "UTF-8",
     |  "-feature",
     |  "-language:existentials",
     |  "-language:higherKinds",
@@ -66,6 +69,6 @@ def addBuildDotSbt(projectDir: Path, projectName: String) =
     |  "-Ywarn-dead-code",
     |  "-Ywarn-numeric-widen",
     |  "-Ywarn-value-discard",
-    |  "-Ywarn-unused-import" // 2.11 only
+    |  "-Ywarn-unused-import"
     |)""".stripMargin
   )
