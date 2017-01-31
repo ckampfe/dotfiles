@@ -49,7 +49,7 @@ def addBuildDotSbt(projectDir: Path, projectName: String) =
     |libraryDependencies ++= Seq(
     |  "com.lihaoyi"   %% "ammonite-ops"  % "0.8.2",
     |  "org.typelevel" %% "cats"          % "0.9.0",
-    |  "io.circe"      %% "circe-core"    % "0.7.0,
+    |  "io.circe"      %% "circe-core"    % "0.7.0",
     |  "io.circe"      %% "circe-generic" % "0.7.0",
     |  "io.circe"      %% "circe-parser"  % "0.7.0"
     |)
