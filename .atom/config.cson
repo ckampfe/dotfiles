@@ -15,8 +15,7 @@
       uno: "#e78695"
   editor:
     fontFamily: "FiraCode-Retina"
-    fontSize: 12
-    preferredLineLength: 110
+    preferredLineLength: 90
     softWrap: true
     softWrapAtPreferredLineLength: true
   "exception-reporting":
