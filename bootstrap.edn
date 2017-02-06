@@ -1,0 +1,17 @@
+[{:out-fn (fn [input-file] (str "/Users/xcxk066/" (:source input-file)))
+  :files [{:source ".spacemacs"}
+          {:source ".tmux.conf"}
+          {:source ".zshrc"}
+          {:source ".hyper.js"}
+          {:source ".ideavimrc"}
+          {:source ".atom/config.cson"}
+          {:source ".atom/styles.less"}
+          {:source ".config/nvim/init.vim"}]}
+ {:out-fn (fn [input-file]
+            (str "/usr/local/bin/"
+                 (if (:override input-file)
+                   (:override input-file)
+                   (:source input-file))))
+  :files [{:source "clj-new-script" :+x true}
+          {:source "sbt-new.sc" :override "sbt-new" :+x true}
+          {:source "sbt-new-script" :+x true}]}]
