@@ -9,3 +9,8 @@
         'refactor-nrepl.middleware/wrap-refactor
         'cider.nrepl.middleware.apropos/wrap-apropos
         'cider.nrepl.middleware.version/wrap-version])
+
+(defn dep
+  "a convenience function to add dependencies to the current repl session"
+  [& dependencies]
+  (set-env! :dependencies `[~@dependencies]))
