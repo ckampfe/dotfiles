@@ -17,7 +17,12 @@
 @tab-light-brown-active: #786655;
 
 atom-text-editor {
-  font: 'FiraCode-Retina'
+  font: 'FiraCode-Retina';
+  font-size: 12px;
+}
+
+atom-text-editor:not(.mini).editor .lines .line .trailing-whitespace {
+  background: @brand-pink;
 }
 
 atom-text-editor .line.cursor-line, :host .line.cursor-line {
@@ -164,6 +169,10 @@ atom-workspace {
   color: @tab-light-brown;
 }
 
+.tab-bar .tab {
+  background-color: @bg-gray;
+}
+
 .tab-bar .tab.modified:hover .close-icon {
   color: @tab-light-brown;
 }
@@ -171,6 +180,10 @@ atom-workspace {
 .title-bar {
   border-bottom: none;
   background-color: @bg-gray;
+}
+
+.trailing-spaces-highlight-cursor-lines atom-text-editor:not(.mini).editor .lines .line.cursor-line .trailing-whitespace:not(.indent-guide) {
+  background: @brand-pink;
 }
 
 .settings-view input[type="checkbox"]:active, .settings-view input[type="checkbox"]:checked {

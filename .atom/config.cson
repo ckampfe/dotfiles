@@ -1,14 +1,25 @@
 "*":
+  Ensime:
+    ensimeServerVersion: "2.0.0-SNAPSHOT"
   core:
     disabledPackages: [
       "status-bar"
+      "language-perl"
+      "language-php"
+      "language-ruby-on-rails"
+      "language-sass"
+      "language-java"
+      "language-csharp"
+      "git-diff"
+      "proto-repl"
+      "ink"
     ]
     telemetryConsent: "limited"
     themes: [
       "one-light-ui"
       "duotone-light-syntax"
     ]
-    useCustomTitleBar: true
+    titleBar: "custom"
   "duotone-light-syntax":
     color:
       duo: "#5f6deb"
@@ -26,6 +37,10 @@
   "proto-repl":
     inkConsole: false
     preferLein: false
+  "trailing-spaces":
+    enableForCursorLines: true
+    enableForIndentation: true
+  "tree-view": {}
   welcome:
     showOnStartup: false
 ".js.regexp.replacement.source":
