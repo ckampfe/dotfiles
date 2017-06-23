@@ -1,6 +1,10 @@
 /* IVY */
 
-interp.load.ivy("com.lihaoyi" %% "ammonite-shell" % ammonite.Constants.version)
+interp.load.ivy(
+  "com.lihaoyi" %
+  s"ammonite-shell_${scala.util.Properties.versionNumberString}" %
+  ammonite.Constants.version
+)
 
 @
 
@@ -8,7 +12,7 @@ interp.load.ivy("com.lihaoyi" %% "ammonite-shell" % ammonite.Constants.version)
 
 val shellSession = ammonite.shell.ShellSession()
 import shellSession._
-import ammonite.shell.PPrints._
+// import ammonite.shell.PPrints._
 import ammonite.ops._
 import ammonite.shell._
 ammonite.shell.Configure(repl, wd)
@@ -82,7 +86,7 @@ object imports {
   def scalaTags() =
     interp.load("""
       // https://lihaoyi.github.io/scalatags/
-      interp.load.ivy("com.lihaoyi" %% "scalatags" % "0.6.2")
+      interp.load.ivy("com.lihaoyi" %% "scalatags" % "0.6.3")
       @
       import scalatags.Text.all._
     """)
@@ -90,7 +94,7 @@ object imports {
   def kantan() =
     interp.load("""
       // https://github.com/nrinaudo/kantan.csv
-      val kantanCsvVersion = "0.1.16"
+      val kantanCsvVersion = "0.1.19"
       interp.load.ivy("com.nrinaudo" %% "kantan.csv" % kantanCsvVersion)
       interp.load.ivy("com.nrinaudo" %% "kantan.csv-cats" % kantanCsvVersion)
       interp.load.ivy("com.nrinaudo" %% "kantan.csv-generic" % kantanCsvVersion)
@@ -105,7 +109,7 @@ object imports {
   def circe() =
     interp.load("""
       // https://github.com/travisbrown/circe
-      val circeVersion = "0.7.0"
+      val circeVersion = "0.8.0"
       interp.load.ivy("io.circe" %% "circe-core" % circeVersion)
       interp.load.ivy("io.circe" %% "circe-generic" % circeVersion)
       interp.load.ivy("io.circe" %% "circe-parser" % circeVersion)
@@ -119,7 +123,7 @@ object imports {
   def http4s() =
     interp.load("""
       // http://http4s.org/
-      interp.load.ivy("org.http4s" %% "http4s-blaze-client" % "0.15.3a")
+      interp.load.ivy("org.http4s" %% "http4s-blaze-client" % "0.15.13a")
       @
       import org.http4s.Http4s._
     """)
@@ -145,8 +149,8 @@ object imports {
   def monix() =
     interp.load("""
       // https://github.com/monixio/monix
-      interp.load.ivy("io.monix" %% "monix" % "2.1.2")
-      interp.load.ivy("io.monix" %% "monix-cats" % "2.1.2")
+      interp.load.ivy("io.monix" %% "monix" % "2.3.0")
+      interp.load.ivy("io.monix" %% "monix-cats" % "2.3.0")
       @
       import monix.execution.Scheduler.Implicits.global
       import monix.execution.CancelableFuture
@@ -157,8 +161,8 @@ object imports {
   def fs2() =
     interp.load("""
       // https://github.com/functional-streams-for-scala/fs2
-      interp.load.ivy("co.fs2" %% "fs2-core" % "0.9.2")
-      interp.load.ivy("co.fs2" %% "fs2-io" % "0.9.2")
+      interp.load.ivy("co.fs2" %% "fs2-core" % "0.9.7")
+      interp.load.ivy("co.fs2" %% "fs2-io" % "0.9.7")
       @
       import fs2.{io, pipe, text, Stream, Task, Strategy}
     """)
@@ -166,7 +170,7 @@ object imports {
   def fastparse() =
     interp.load("""
       // http://www.lihaoyi.com/fastparse/
-      interp.load.ivy("com.lihaoyi" %% "fastparse" % "0.4.2")
+      interp.load.ivy("com.lihaoyi" %% "fastparse" % "0.4.3")
       @
       import fastparse.all._
     """)
