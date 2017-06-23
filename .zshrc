@@ -81,3 +81,9 @@ fi
 GPG_TTY=$(tty)
 export GPG_TTY
 
+# elixir/erlang
+export ERL_AFLAGS="-kernel shell_history enabled"
+export KERL_DEFAULT_INSTALL_DIR="$HOME/kerl"
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+alias siex="pushd $HOME/code/dotfiles/exshell && iex -S mix && popd"
+
