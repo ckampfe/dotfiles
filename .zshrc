@@ -3,8 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 export TERM=screen-256color
 
 # source ~/.profile
-#
-fpath+=~/.zfunc
+# fpath+=~/.zfunc
 
 source $(brew --prefix)/share/antigen/antigen.zsh
 antigen use oh-my-zsh
@@ -85,5 +84,7 @@ export GPG_TTY
 export ERL_AFLAGS="-kernel shell_history enabled"
 export KERL_DEFAULT_INSTALL_DIR="$HOME/kerl"
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
-alias siex="pushd $HOME/code/dotfiles/exshell && iex -S mix && popd"
+function siex() {
+  pushd $HOME/code/dotfiles/exshell && iex "$@" -S mix && popd
+}
 
