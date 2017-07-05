@@ -11,7 +11,7 @@ defmodule Exshell do
   """
   def tree_stream(root, branch?, get_child_nodes) do
     Stream.transform(
-      Enum.to_list(root),
+      root,
       [],
       fn
         [], acc -> {:halt, acc}
