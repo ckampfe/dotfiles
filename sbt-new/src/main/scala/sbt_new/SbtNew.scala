@@ -11,7 +11,7 @@ object SbtNew {
       System.exit(1)
     }
 
-    val projectDir = Paths.get("").toAbsolutePath
+    val projectDir = Paths.get(projectName).toAbsolutePath
     println(projectDir.toString)
     val sbtPlugins = Seq(
       """addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.5")"""
