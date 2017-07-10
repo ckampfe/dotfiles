@@ -8,6 +8,10 @@ defmodule Exshell do
 
       iex> Exshell.tree_stream(%{a: %{b: :c, d: %{e: :f}}}, fn {_k,v} -> is_map(v); v -> is_list(v) end, fn m when is_map(m) -> Enum.map(m, &Enum.to_list/1); {_k,v} -> v; v -> v end) |> Enum.take(4)
       [a: %{b: :c, d: %{e: :f}}, b: :c, d: %{e: :f}, e: :f]
+
+      iex> Exshell.tree_stream(1..5, fn {_k,v} -> is_map(v); v -> is_list(v) end, fn m when is_map(m) -> Enum.map(m, &Enum.to_list/1); {_k,v} -> v; v -> v end) |> Enum.take(5)
+      [1, 2, 3, 4, 5]
+)
   """
   def tree_stream(root, branch?, get_child_nodes) do
     Stream.transform(

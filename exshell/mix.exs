@@ -20,6 +20,7 @@ defmodule Exshell.Mixfile do
     [{:httpoison, "~> 0.11.1"},
      {:poison, "~> 3.1"},
      {:strand, "~> 0.5"},
-     {:array_vector, "~> 0.1.0"}]
+     {:array_vector, "~> 0.2"},
+     {:prolly, "~> 0.2"}]
   end
 end
