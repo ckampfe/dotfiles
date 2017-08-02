@@ -1,36 +1,28 @@
 defmodule Exshell do
-  @doc """
-  Lazily crawl a tree
-
-  ## Examples
-      iex> Exshell.tree_stream([:a, [:b, :c, :d, [:e, :f]]], fn {_k,v} -> is_map(v); v -> is_list(v) end, fn m when is_map(m) -> Enum.map(m, &Enum.to_list/1); {_k,v} -> v; v -> v end) |> Enum.take(8)
-      [:a, [:b, :c, :d, [:e, :f]], :b, :c, :d, [:e, :f], :e, :f]
-
-      iex> Exshell.tree_stream(%{a: %{b: :c, d: %{e: :f}}}, fn {_k,v} -> is_map(v); v -> is_list(v) end, fn m when is_map(m) -> Enum.map(m, &Enum.to_list/1); {_k,v} -> v; v -> v end) |> Enum.take(4)
-      [a: %{b: :c, d: %{e: :f}}, b: :c, d: %{e: :f}, e: :f]
-
-      iex> Exshell.tree_stream(1..5, fn {_k,v} -> is_map(v); v -> is_list(v) end, fn m when is_map(m) -> Enum.map(m, &Enum.to_list/1); {_k,v} -> v; v -> v end) |> Enum.take(5)
-      [1, 2, 3, 4, 5]
-)
-  """
-  def tree_stream(root, branch?, get_child_nodes) do
+  def traverse(enum) do
     Stream.transform(
-      root,
+      enum,
       [],
-      fn
-        [], acc -> {:halt, acc}
-        el, acc ->
-            case branch?.(el) do
-              true ->
-                child_nodes = get_child_nodes.(el)
-                child_stream = tree_stream(child_nodes, branch?, get_child_nodes)
-                {
-                  Stream.concat([el], child_stream),
-                  acc
-                }
-              false ->
-                {[el], acc}
-            end
+      fn(el, acc) ->
+        case traverse_branch?(el) do
+          true ->
+            child_nodes = traverse_child_nodes(el)
+            child_stream = traverse(child_nodes)
+            {
+              Stream.concat([el], child_stream),
+              acc
+            }
+          false ->
+            {[el], acc}
+        end
       end)
   end
+
+  defp traverse_branch?({_k, v}) when is_map(v) or is_list(v), do: true
+  defp traverse_branch?(el) when is_map(el) or is_list(el), do: true
+  defp traverse_branch?(_), do: false
+
+  defp traverse_child_nodes(el) when is_map(el), do: Stream.into(el, [])
+  defp traverse_child_nodes(el) when is_list(el), do: el
+  defp traverse_child_nodes({_k, v}), do: v
 end
