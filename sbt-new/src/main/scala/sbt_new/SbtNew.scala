@@ -46,7 +46,7 @@ object SbtNew {
   def addSbtVersion(projectDir: Path) =
     Files.write(
       Paths.get(s"${projectDir}/project/build.properties"),
-      "sbt.version=0.13.15".getBytes
+      "sbt.version=1.0.0-RC3".getBytes
     )
 
   def addSbtPlugins(projectDir: Path, sbtPlugins: Seq[String]) =
@@ -63,7 +63,7 @@ object SbtNew {
       |
       |version := "0.0.1"
       |
-      |scalaVersion := "2.12.2"
+      |scalaVersion := "2.12.3"
       |
       |libraryDependencies ++= Seq(
       |  "com.lihaoyi"   %% "ammonite-ops"  % "0.8.2",
@@ -88,7 +88,8 @@ object SbtNew {
       |  "-Ywarn-dead-code",
       |  "-Ywarn-numeric-widen",
       |  "-Ywarn-value-discard",
-      |  "-Ywarn-unused-import"
+      |  "-Ywarn-unused-import",
+      |  "-Ypartial-unification"
       |)""".stripMargin.getBytes
     )
 }
