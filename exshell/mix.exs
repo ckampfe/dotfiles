@@ -17,10 +17,15 @@ defmodule Exshell.Mixfile do
   end
 
   defp deps do
-    [{:httpoison, "~> 0.11.1"},
+    [{:httpoison, "~> 0.13.0"},
      {:poison, "~> 3.1"},
      {:strand, "~> 0.5"},
-     {:array_vector, "~> 0.2"},
-     {:prolly, "~> 0.2"}]
+     {:array_vector, "~> 0.3"},
+     {:prolly, "~> 0.2"},
+     {:ecto, "~> 2.1"},
+     {:postgrex, ">= 0.0.0"},
+     {:decimal, "~> 1.0"},
+     {:sweet_xml, "~> 0.6.5"}
+   ]
   end
 end
