@@ -28,16 +28,15 @@ values."
      html
      ivy
      markdown
-     material-theme
      org
      osx
      ;; ruby
      rust
      ;; scala
      shell
-     solarized-theme
      sql
      syntax-checking
+     themes-megapack
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -115,7 +114,11 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
+   dotspacemacs-themes '(leuven
+                         material-light
+                         spacemacs-light
+                         apropospriate-light
+                         spacemacs-dark
                          solarized-light
                          material)
    ;; If non nil the cursor color matches the state color.
@@ -250,7 +253,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
