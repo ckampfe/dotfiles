@@ -1,0 +1,27 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "workbench.colorTheme": "Quiet Light",
+    "vim.enableNeovim": true,
+    "vim.disableAnnoyingNeovimMessage": true,
+    "editor.fontFamily": "FiraCode-Retina, Menlo, Monaco, 'Courier New', monospace",
+    "editor.cursorStyle": "block",
+    "editor.cursorBlinking": "solid",
+    "terminal.external.osxExec": "Alacritty.app",
+    "editor.fontLigatures": true,
+    "editor.tabSize": 2,
+    "workbench.iconTheme": null,
+    "window.openFoldersInNewWindow": "off",
+    "window.zoomLevel": 0,
+    "vim.insertModeKeyBindings": [{
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "elm.formatOnSave": true,
+    "workbench.sideBar.location": "left",
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "workbench.panel.location": "bottom",
+    "logbook.directory": "/Users/xcxk066/code/my_logbooks",
+    "logbook.openInNewWindow": true,
+    "typescript.tsserver.log": "verbose"
+}
