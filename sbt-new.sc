@@ -11,7 +11,7 @@ def main(projectName: String = "", path: Path = cwd) = {
 
   val projectDir = cwd/projectName
   val sbtPlugins = Seq(
-    """addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")"""
+    """addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.5")"""
   )
 
   makeDirs(projectDir)
@@ -32,7 +32,7 @@ def makeDirs(projectDir: Path) = {
 }
 
 def addSbtVersion(projectDir: Path) =
-  write(projectDir/'project/"build.properties", "sbt.version=0.13.13")
+  write(projectDir/'project/"build.properties", "sbt.version=0.13.15")
 
 def addSbtPlugins(projectDir: Path, sbtPlugins: Seq[String]) =
   write(projectDir/'project/"plugins.sbt", sbtPlugins.mkString("\n"))
@@ -44,7 +44,7 @@ def addBuildDotSbt(projectDir: Path, projectName: String) =
     |
     |version := "0.0.1"
     |
-    |scalaVersion := "2.12.1"
+    |scalaVersion := "2.12.2"
     |
     |libraryDependencies ++= Seq(
     |  "com.lihaoyi"   %% "ammonite-ops"  % "0.8.2",

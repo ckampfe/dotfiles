@@ -2,6 +2,17 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
+config :exshell, ecto_repos: [Exshell.Repo]
+
+config :exshell, Exshell.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  database: "exshell",
+  username: "postgres",
+  password: "",
+  hostname: "localhost",
+  # OR use a URL to connect instead
+  url: "postgres://postgres:@localhost/exshell"
+
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
 # file won't be loaded nor affect the parent project. For this reason,

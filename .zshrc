@@ -29,7 +29,7 @@ alias berc='bundle exec rake console'
 alias mylocalip='ifconfig | grep 192'
 alias v='vim '
 alias vim='nvim '
-alias e='emacs '
+alias e='exa -la '
 alias diff='colordiff '
 alias zshconfig="vim ~/.zshrc"
 alias youp3="youtube-dl -x --audio-format mp3 "
@@ -63,13 +63,17 @@ export PATH="$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/
 # export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
 export EDITOR='nvim'
 
+
+# rust
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+
 # ruby
 # look for rubies in ~/.rubies
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
   source /usr/local/share/chruby/chruby.sh
 fi
 source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby ruby-2.3
+chruby ruby-2.5
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
   . "${HOME}/.gpg-agent-info"
@@ -84,7 +88,15 @@ export GPG_TTY
 export ERL_AFLAGS="-kernel shell_history enabled"
 export KERL_DEFAULT_INSTALL_DIR="$HOME/kerl"
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
-function siex() {
-  pushd $HOME/code/dotfiles/exshell && iex "$@" -S mix && popd
+function xx() {
+  pushd $HOME/code/dotfiles/exshell \
+    && iex "$@" -S mix \
+    && popd
 }
+
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+
+export GOPATH=$HOME/code/gocode
+export PATH=$PATH:$GOPATH/bin
+
 

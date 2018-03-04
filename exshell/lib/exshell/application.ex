@@ -12,6 +12,8 @@ defmodule Exshell.Application do
     children = [
       # Starts a worker by calling: Exshell.Worker.start_link(arg1, arg2, arg3)
       # worker(Exshell.Worker, [arg1, arg2, arg3]),
+      # {Exshell.Repo, []}
+      {Weather.Supervisor, []}
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
