@@ -11,13 +11,14 @@ def main(projectName: String = "", path: Path = cwd) = {
 
   val projectDir = cwd/projectName
   val sbtPlugins = Seq(
-    """addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.5")"""
+    """addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")"""
   )
 
   makeDirs(projectDir)
   addSbtVersion(projectDir)
   addSbtPlugins(projectDir, sbtPlugins)
   addBuildDotSbt(projectDir, projectName)
+  addMainClass(projectDir, projectName)
 }
 
 def makeDirs(projectDir: Path) = {
@@ -32,7 +33,7 @@ def makeDirs(projectDir: Path) = {
 }
 
 def addSbtVersion(projectDir: Path) =
-  write(projectDir/'project/"build.properties", "sbt.version=0.13.15")
+  write(projectDir/'project/"build.properties", "sbt.version=1.1.6")
 
 def addSbtPlugins(projectDir: Path, sbtPlugins: Seq[String]) =
   write(projectDir/'project/"plugins.sbt", sbtPlugins.mkString("\n"))
@@ -44,15 +45,24 @@ def addBuildDotSbt(projectDir: Path, projectName: String) =
     |
     |version := "0.0.1"
     |
-    |scalaVersion := "2.12.2"
+    |scalaVersion := "2.12.6"
     |
     |libraryDependencies ++= Seq(
-    |  "com.lihaoyi"   %% "ammonite-ops"  % "0.8.2",
-    |  "org.typelevel" %% "cats"          % "0.9.0",
-    |  "io.circe"      %% "circe-core"    % "0.7.0",
-    |  "io.circe"      %% "circe-generic" % "0.7.0",
-    |  "io.circe"      %% "circe-parser"  % "0.7.0"
+    |  "com.lihaoyi"   %% "ammonite-ops"  % "1.1.2",
+    |  "org.typelevel" %% "cats-core"     % "1.1.0",
+    |  "org.typelevel" %% "cats-effect"   % "1.0.0-RC2",
+    |  "io.circe"      %% "circe-core"    % "0.10.0-M1",
+    |  "io.circe"      %% "circe-generic" % "0.10.0-M1",
+    |  "io.circe"      %% "circe-parser"  % "0.10.0-M1"
     |)
+    |
+    |import scala.sys.process._
+    |
+    |lazy val nativeImage = taskKey[Unit]("Build a native image with GraalVM")
+    |
+    |nativeImage := {
+    |  s"native-image -jar target/scala-2.12/${projectName}-assembly-" + version.value + ".jar -H:Name=${projectName}-" + version.value !
+    |}
     |
     |scalacOptions ++= Seq(
     |  "-deprecation",
@@ -71,4 +81,14 @@ def addBuildDotSbt(projectDir: Path, projectName: String) =
     |  "-Ywarn-value-discard",
     |  "-Ywarn-unused-import"
     |)""".stripMargin
+  )
+
+def addMainClass(projectDir: Path, projectName: String) =
+  write(
+    projectDir/'src/'main/'scala/projectName/s"${projectName}.scala",
+    s"""object ${projectName} {
+    |  def main(args: Array[String]) = {
+    |    println("Hello, world!")
+    |  }
+    |}""".stripMargin
   )
