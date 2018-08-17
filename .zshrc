@@ -100,3 +100,16 @@ export GOPATH=$HOME/code/gocode
 export PATH=$PATH:$GOPATH/bin
 
 
+# export BOOT_JVM_OPTIONS="--add-modules java.xml.bind"
+
+# graalvm
+# export PATH="/usr/local/share/graalvm-1.0.0-rc1/Contents/Home/bin:$PATH"
+# export PATH="/Users/clark/Downloads/graalvm-1.0.0-rc1/Contents/Home/bin:$PATH"
+# export PATH="/Users/clark/Downloads/graalvm-ee-1.0.0-rc2/Contents/Home/bin:$PATH"
+# export PATH="/Users/clark/Downloads/graalvm-ee-1.0.0-rc3/Contents/Home/bin:$PATH"
+# export PATH="/Users/clark/Downloads/graalvm-ee-1.0.0-rc4/Contents/Home/bin:$PATH"
+# export PATH="/Users/clark/Downloads/graalvm-ce-1.0.0-rc5/Contents/Home/bin:$PATH"
+# alias node="node --jvm"
+
+# use brew sqlite
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
