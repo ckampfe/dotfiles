@@ -57,6 +57,9 @@ alias get='git '
 alias mc='mix compile'
 alias mr='mix run'
 
+# elm
+alias elm-make="elm make"
+
 export PATH="$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:$HOME/.local/bin"
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -69,11 +72,11 @@ export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # ruby
 # look for rubies in ~/.rubies
-if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
-  source /usr/local/share/chruby/chruby.sh
-fi
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby ruby-2.5
+# if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
+#   source /usr/local/share/chruby/chruby.sh
+# fi
+# source /usr/local/opt/chruby/share/chruby/chruby.sh
+# chruby ruby-2.5
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
   . "${HOME}/.gpg-agent-info"
@@ -98,7 +101,6 @@ export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
 export GOPATH=$HOME/code/gocode
 export PATH=$PATH:$GOPATH/bin
-
 
 # export BOOT_JVM_OPTIONS="--add-modules java.xml.bind"
 
