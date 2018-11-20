@@ -60,14 +60,13 @@ alias mr='mix run'
 # elm
 alias elm-make="elm make"
 
-export PATH="$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:$HOME/.local/bin"
-
 # export MANPATH="/usr/local/man:$MANPATH"
 # export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
 export EDITOR='nvim'
 
 
 # rust
+export PATH="$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:$HOME/.local/bin"
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # ruby
@@ -111,7 +110,23 @@ export PATH=$PATH:$GOPATH/bin
 # export PATH="/Users/clark/Downloads/graalvm-ee-1.0.0-rc3/Contents/Home/bin:$PATH"
 # export PATH="/Users/clark/Downloads/graalvm-ee-1.0.0-rc4/Contents/Home/bin:$PATH"
 # export PATH="/Users/clark/Downloads/graalvm-ce-1.0.0-rc5/Contents/Home/bin:$PATH"
+# export PATH="/Users/clark/Downloads/graalvm-ce-1.0.0-rc6/Contents/Home/bin:$PATH"
+# export PATH="/Users/clark/Downloads/graalvm-ce-1.0.0-rc8/Contents/Home/bin:$PATH"
+export PATH="/Users/clark/Downloads/graalvm-ce-1.0.0-rc9/Contents/Home/bin:$PATH"
 # alias node="node --jvm"
+
+# export JAVA_HOME="/Users/clark/Downloads/graalvm-ce-1.0.0-rc6/Contents/Home/bin"
+# export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-1.0.0-rc6/Contents/Home"
+# export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-1.0.0-rc8/Contents/Home"
+export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-1.0.0-rc9/Contents/Home"
 
 # use brew sqlite
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export SHELL="/usr/local/bin/zsh"
+
+# OPAM configuration
+# . /Users/clark/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# opam configuration
+test -r /Users/clark/.opam/opam-init/init.zsh && . /Users/clark/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
