@@ -71,11 +71,11 @@ export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # ruby
 # look for rubies in ~/.rubies
-# if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
-#   source /usr/local/share/chruby/chruby.sh
-# fi
-# source /usr/local/opt/chruby/share/chruby/chruby.sh
-# chruby ruby-2.5
+if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
+  source /usr/local/share/chruby/chruby.sh
+fi
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+chruby ruby-2.5
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
   . "${HOME}/.gpg-agent-info"
@@ -104,21 +104,8 @@ export PATH=$PATH:$GOPATH/bin
 # export BOOT_JVM_OPTIONS="--add-modules java.xml.bind"
 
 # graalvm
-# export PATH="/usr/local/share/graalvm-1.0.0-rc1/Contents/Home/bin:$PATH"
-# export PATH="/Users/clark/Downloads/graalvm-1.0.0-rc1/Contents/Home/bin:$PATH"
-# export PATH="/Users/clark/Downloads/graalvm-ee-1.0.0-rc2/Contents/Home/bin:$PATH"
-# export PATH="/Users/clark/Downloads/graalvm-ee-1.0.0-rc3/Contents/Home/bin:$PATH"
-# export PATH="/Users/clark/Downloads/graalvm-ee-1.0.0-rc4/Contents/Home/bin:$PATH"
-# export PATH="/Users/clark/Downloads/graalvm-ce-1.0.0-rc5/Contents/Home/bin:$PATH"
-# export PATH="/Users/clark/Downloads/graalvm-ce-1.0.0-rc6/Contents/Home/bin:$PATH"
-# export PATH="/Users/clark/Downloads/graalvm-ce-1.0.0-rc8/Contents/Home/bin:$PATH"
-export PATH="/Users/clark/Downloads/graalvm-ce-1.0.0-rc9/Contents/Home/bin:$PATH"
-# alias node="node --jvm"
-
-# export JAVA_HOME="/Users/clark/Downloads/graalvm-ce-1.0.0-rc6/Contents/Home/bin"
-# export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-1.0.0-rc6/Contents/Home"
-# export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-1.0.0-rc8/Contents/Home"
-export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-1.0.0-rc9/Contents/Home"
+# export PATH="/Users/clark/Downloads/graalvm-ce-1.0.0-rc12/Contents/Home/bin:$PATH"
+# export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-1.0.0-rc12/Contents/Home"
 
 # use brew sqlite
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
@@ -130,3 +117,7 @@ export SHELL="/usr/local/bin/zsh"
 
 # opam configuration
 test -r /Users/clark/.opam/opam-init/init.zsh && . /Users/clark/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+export PATH="/usr/local/opt/qt/bin:$PATH"
+
+# python
+VIRTUALENVWRAPPER_PYTHON='/usr/local/bin/python3'
