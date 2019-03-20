@@ -481,6 +481,24 @@ values."
 (defun insert-current-date ()
   (shell-command-to-string "echo -n $(date +%Y-%m-%d)"))
 
+(defun capture-selection (start end)
+  "capture the current selection using cap"
+  (interactive "r")
+  (let ((capture-text (get-selected-text start end)))
+    (shell-command-to-string (concat "cap " "'" capture-text "'"))))
+
+(defun tweet-selection (start end)
+  "tweet the current selection using twirl"
+  (interactive "r")
+  (let ((tweet-text (get-selected-text start end)))
+    (shell-command-to-string (concat "twirl " "'" tweet-text "'"))))
+
+(defun get-selected-text (start end)
+  (interactive "r")
+  (if (use-region-p)
+      (let ((regionp (buffer-substring start end)))
+        regionp)))
+
 ;;----------------------------------------------------------------------------
 ;; Reason setup
 ;;----------------------------------------------------------------------------
