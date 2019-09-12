@@ -33,9 +33,11 @@ values."
      auto-completion
      (clojure :variables clojure-enable-clj-refactor t)
      colors
+     dap
      docker
      elfeed
-     elixir
+     (elixir :variables elixir-backend 'lsp
+                        elixir-ls-path "/Users/clark/code/elixir-ls/release")
      elm
      emacs-lisp
      erlang
@@ -383,9 +385,10 @@ values."
   (add-hook 'org-mode-hook 'org-indent-mode)
 
   ;; elixir
-  (add-hook 'elixir-mode-hook 'alchemist-mode)
-  (add-hook 'alchemist-mode-hook 'company-mode)
-  (add-hook 'alchemist-mode-hook 'auto-complete-mode)
+  ;; (add-hook 'elixir-mode-hook 'alchemist-mode)
+  ;; (add-hook 'alchemist-mode-hook 'company-mode)
+  ;; (add-hook 'alchemist-mode-hook 'auto-complete-mode)
+  (add-hook 'elixir-mode-hook 'lsp-mode)
 
   ;; elm
   (setq elm-format-on-save t)
@@ -536,6 +539,21 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
   (setq explicit-shell-file-name "/usr/local/bin/zsh")
+
+  (add-hook 'rust-mode-hook 'lsp)
+
+  (setq org-export-headline-levels 2)
+  ;; wordwrap long lines
+  ;; (setq spacemacs/toggle-truncate-lines t)
+  ;; automatically wrap words past the fill column
+  (add-hook 'org-mode-hook 'turn-on-auto-fill)
+
+  ;; turn on visual line mode in org-mode
+  (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
+
+  ;; necessary for org-mode indent
+  (add-hook 'org-mode-hook 'org-indent-mode)
+
 
   (defun bb/setup-term-mode ()
     (evil-local-set-key 'insert (kbd "C-r") 'bb/send-C-r))

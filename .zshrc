@@ -68,6 +68,11 @@ export EDITOR='nvim'
 # rust
 export PATH="$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:$HOME/.local/bin"
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+alias cb="cargo build"
+alias cbr="cargo build --release"
+alias ct="cargo test"
+alias ctr="cargo test --release"
+
 
 # ruby
 # look for rubies in ~/.rubies
@@ -95,6 +100,7 @@ function xx() {
     && iex "$@" -S mix \
     && popd
 }
+# . ~/kerl/21.3-builtdocs/activate
 
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
@@ -104,8 +110,8 @@ export PATH=$PATH:$GOPATH/bin
 # export BOOT_JVM_OPTIONS="--add-modules java.xml.bind"
 
 # graalvm
-export PATH="/Users/clark/Downloads/graalvm-ce-19.1.0/Contents/Home/bin:$PATH"
-export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-19.1.0/Contents/Home"
+export PATH="/Users/clark/Downloads/graalvm-ce-19.1.1/Contents/Home/bin:$PATH"
+export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-19.1.1/Contents/Home"
 
 # use brew sqlite
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
@@ -121,3 +127,26 @@ export PATH="/usr/local/opt/qt/bin:$PATH"
 
 # python
 VIRTUALENVWRAPPER_PYTHON='/usr/local/bin/python3'
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+alias q='QHOME=~/q rlwrap -r ~/q/q'
+
+alias view_cap="open http://localhost:5000/entries"
+alias vc="open http://localhost:5000/entries"
+
+# node version manager
+eval "$(nodenv init -)"
+
+# docker
+# export DOCKER_TLS_VERIFY="1"
+# export DOCKER_HOST="tcp://192.168.99.100:2376"
+# export DOCKER_CERT_PATH="/Users/clark/.docker/machine/machines/default"
+# export DOCKER_MACHINE_NAME="default"
+# Run this command to configure your shell:
+# eval $(docker-machine env default)
+
+
+
+# Wasmer
+export WASMER_DIR="/Users/clark/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
