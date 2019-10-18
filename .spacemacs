@@ -482,6 +482,7 @@ values."
   (cider-jack-in-clj '(:project-dir "~/code/scratch"))
   (let '(buf (get-buffer-create "scratch.clj"))
     (switch-to-buffer buf)
+    (insert-file-contents "default.clj" nil nil nil)
     (with-current-buffer buf
       (clojure-mode))))
 
