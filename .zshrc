@@ -110,8 +110,8 @@ export PATH=$PATH:$GOPATH/bin
 # export BOOT_JVM_OPTIONS="--add-modules java.xml.bind"
 
 # graalvm
-export PATH="/Users/clark/Downloads/graalvm-ce-19.2.0.1/Contents/Home/bin:$PATH"
-export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-19.2.0.1/Contents/Home"
+export PATH="/Users/clark/Downloads/graalvm-ce-19.2.1/Contents/Home/bin:$PATH"
+export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-19.2.1/Contents/Home"
 
 # use brew sqlite
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
