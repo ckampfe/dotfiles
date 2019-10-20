@@ -1,0 +1,13 @@
+{:paths ["src"]
+ :deps {aleph {:mvn/version "0.4.6"}
+        cheshire {:mvn/version "5.9.0"}
+        instaparse {:mvn/version "1.4.10"}
+        org.clojure/clojure {:mvn/version "RELEASE"}
+        org.clojure/core.async {:mvn/version "0.4.500"}
+        org.clojure/spec-alpha2 {:git/url "https://github.com/clojure/spec-alpha2.git"
+                                 :sha "2a0a7c49c86e31b528be857ed004a4931a0c2551"}
+        org.clojure/java.jdbc {:mvn/version "0.7.8"}
+        org.clojure/tools.deps.alpha {:git/url "https://github.com/clojure/tools.deps.alpha.git"
+                                      :sha "148cab8f154711f8495bd632ebdc53a14dff7f09"}
+        org.postgresql/postgresql {:mvn/version "42.2.5"}
+        org.xerial/sqlite-jdbc {:mvn/version "3.28.0"}}}

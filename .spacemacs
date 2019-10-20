@@ -479,12 +479,22 @@ values."
 (defun clj-scratch ()
   "Create a scratch clojure buffer and jack in with default deps"
   (interactive)
-  (cider-jack-in-clj '(:project-dir "~/code/scratch"))
-  (let '(buf (get-buffer-create "scratch.clj"))
+  ;; if there is a file that is TODAYS_DATE.clj,
+  ;; open it, otherwise create it and open it
+  (let* ((todays-date (insert-current-date-underscores))
+         (buf (find-file (concat "~/code/dotfiles/scratch/src/" todays-date ".clj"))))
+
     (switch-to-buffer buf)
-    (insert-file-contents "default.clj" nil nil nil)
+
+    ;; if the buffer is empty, insert the default imports
+    (if (= (buffer-size buf) 0)
+        (insert-file-contents "~/code/dotfiles/scratch/default.clj" nil nil nil))
+
+    ;; if the buffer is not connected to a cider session, start one
     (with-current-buffer buf
-      (clojure-mode))))
+      (clojure-mode)
+      (if (not (cider-connected-p))
+          (cider-jack-in-clj '(:project-dir "~/code/dotfiles/scratch"))))))
 
 (defun todays-notes ()
   "open notes file for today's date"
@@ -496,6 +506,9 @@ values."
 
 (defun insert-current-date ()
   (shell-command-to-string "echo -n $(date +%Y-%m-%d)"))
+
+(defun insert-current-date-underscores ()
+  (shell-command-to-string "echo -n $(date +%Y_%m_%d)"))
 
 (defun capture-selection (start end)
   "capture the current selection using cap"
