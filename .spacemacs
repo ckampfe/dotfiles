@@ -482,12 +482,12 @@ values."
   ;; if there is a file that is TODAYS_DATE.clj,
   ;; open it, otherwise create it and open it
   (let* ((todays-date (insert-current-date-underscores))
-         (buf (find-file (concat "~/code/dotfiles/scratch/src/" todays-date ".clj"))))
+         (buf (find-file (concat "~/code/dotfiles/scratch/src/ckampfe/" todays-date ".clj"))))
 
     (switch-to-buffer buf)
 
     ;; if the buffer is empty, insert the default imports
-    (if (= (buffer-size buf) 0)
+    (if (<= (buffer-size buf) 25)
         (insert-file-contents "~/code/dotfiles/scratch/default.clj" nil nil nil))
 
     ;; if the buffer is not connected to a cider session, start one

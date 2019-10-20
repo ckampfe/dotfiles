@@ -1,4 +1,3 @@
-
 (comment
 
   (require '[aleph.http :as http]
@@ -7,7 +6,6 @@
            '[clojure.java.io :as io]
            '[clojure.java.jdbc :as jdbc]
            '[clojure.spec-alpha2 :as s]
-           '[instaparse.core :as insta]
            )
 
 
