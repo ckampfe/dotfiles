@@ -1,0 +1,22 @@
+[aws]
+style = "bold blue"
+symbol = "🅰 "
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]      # The name of the module we are configuring is "character"
+symbol = "➜"     # The "symbol" segment is being set to "➜"
+
+[cmd_duration]
+min_time = 2
+
+[directory]
+truncation_length = 8
+
+[rust]
+symbol = "Rust "
+
+[time]
+disabled = false
+format = "[ %T ]"
+utc_time_offset = -5
+
