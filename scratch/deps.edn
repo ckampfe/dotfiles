@@ -1,6 +1,7 @@
 {:paths ["src"]
  :deps {aleph {:mvn/version "0.4.6"}
         cheshire {:mvn/version "5.9.0"}
+        datascript {:mvn/version "0.18.7"}
         instaparse {:mvn/version "1.4.10"}
         org.clojure/clojure {:mvn/version "RELEASE"}
         org.clojure/core.async {:mvn/version "0.4.500"}
