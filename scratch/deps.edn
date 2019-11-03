@@ -1,5 +1,6 @@
 {:paths ["src"]
  :deps {aleph {:mvn/version "0.4.6"}
+        aysylu/loom {:mvn/version "1.0.2"}
         cheshire {:mvn/version "5.9.0"}
         datascript {:mvn/version "0.18.7"}
         instaparse {:mvn/version "1.4.10"}
