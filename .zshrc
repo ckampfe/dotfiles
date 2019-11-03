@@ -8,9 +8,13 @@ alias berc='bundle exec rake console'
 alias mylocalip='ifconfig | grep 192'
 alias v='vim '
 alias vim='nvim '
-alias ls="exa -la"
+alias ls="exa -l"
+alias l="exa -la"
 alias diff='colordiff '
 alias youp3="youtube-dl -x --audio-format mp3 "
+
+alias ..="cd .."
+alias ...="cd ..; cd .."
 
 # git
 alias gpom='echo "git pull origin master"; git pull origin master'
@@ -43,6 +47,7 @@ alias cb="cargo build"
 alias cbr="cargo build --release"
 alias ct="cargo test"
 alias ctr="cargo test --release"
+alias ci="cargo install --path . --force"
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
   . "${HOME}/.gpg-agent-info"
@@ -85,3 +90,7 @@ export WASMER_DIR="/Users/clark/.wasmer"
 
 # prompt
 eval "$(starship init zsh)"
+
+export WASMTIME_HOME="$HOME/.wasmtime"
+
+export PATH="$WASMTIME_HOME/bin:$PATH"
