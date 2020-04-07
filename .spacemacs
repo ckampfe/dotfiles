@@ -46,8 +46,9 @@ values."
      go
      html
      ivy
-     lsp
+     (lsp :variables lsp-rust-server 'rust-analyzer)
      markdown
+     ;; (markdown :variables markdown-live-preview-engine 'vmd)
      ;; ocaml
      org
      osx
@@ -175,7 +176,7 @@ values."
                               :weight normal
                               :width normal
                               :slant normal
-                              :powerline-scale 1.4)
+                              :powerline-scale 0.5)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -345,7 +346,6 @@ values."
 
   (desktop-save-mode 1)
 
-
   )
 
 (defun dotspacemacs/config ()
@@ -399,10 +399,14 @@ values."
 
   ;; rust
   (setq rust-format-on-save t)
-  ;; (add-hook 'rust-mode 'eglot-ensure)
+
   (with-eval-after-load 'lsp-mode
-    (setq lsp-rust-rls-command '("rustup" "run" "stable" "rls"))
-    (require 'lsp-rust))
+    ;; (setq lsp-rust-rls-command '("rustup" "run" "stable" "rls"))
+    (lsp-ui-doc-mode nil)
+    (require 'lsp-rust)
+    (setq lsp-rust-server 'rust-analyzer)
+    (lsp-ui-doc-mode nil)
+    )
 
   (add-hook 'rust-mode-hook 'lsp)
 
@@ -679,6 +683,8 @@ This function is called at the very end of Spacemacs initialization."
  '(highlight-symbol-foreground-color "#E0E0E0")
  '(highlight-tail-colors (quote (("#ed0547ad8099" . 0) ("#424242" . 100))))
  '(js-indent-level 2)
+ '(lsp-ui-doc-alignment (quote window))
+ '(lsp-ui-doc-enable nil)
  '(org-agenda-files nil)
  '(package-selected-packages
    (quote

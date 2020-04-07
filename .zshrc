@@ -1,6 +1,15 @@
+if [[ $PWD == $HOME ]]; then
+    cd ~/code
+fi
+
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# export ZSH=$HOME/.oh-my-zsh
 export TERM=screen-256color
+
+export HISTFILE=~/.zsh_history
+setopt share_history
+setopt inc_append_history
+eval $(fc -A)
 
 alias tmux="TERM=xterm-256color tmux"
 alias be='bundle exec '
@@ -31,6 +40,9 @@ alias gx='gitx --all'
 alias got='git '
 alias get='git '
 
+# docker
+alias docker-gc="docker run --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock spotify/docker-gc"
+
 # elixir/mix
 alias mc='mix compile'
 alias mr='mix run'
@@ -55,6 +67,8 @@ if [ -f "${HOME}/.gpg-agent-info" ]; then
   export SSH_AUTH_SOCK
 fi
 
+alias du="dust"
+
 GPG_TTY=$(tty)
 export GPG_TTY
 
@@ -73,8 +87,9 @@ export PATH=$PATH:$GOPATH/bin
 # export BOOT_JVM_OPTIONS="--add-modules java.xml.bind"
 
 # graalvm
-export PATH="/Users/clark/Downloads/graalvm-ce-19.2.1/Contents/Home/bin:$PATH"
-export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-19.2.1/Contents/Home"
+export PATH="/Users/clark/Downloads/graalvm-ce-java8-20.0.0/Contents/Home/bin:$PATH"
+export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-java8-20.0.0/Contents/Home"
+
 
 # use brew sqlite
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
@@ -94,3 +109,11 @@ eval "$(starship init zsh)"
 export WASMTIME_HOME="$HOME/.wasmtime"
 
 export PATH="$WASMTIME_HOME/bin:$PATH"
+
+# node
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+
+# python/conda
+export PATH="/Users/clark/miniconda3/bin:$PATH"
+
