@@ -117,3 +117,4 @@ export NVM_DIR="$HOME/.nvm"
 # python/conda
 export PATH="/Users/clark/miniconda3/bin:$PATH"
 
+export PATH="~/.emacs.d/bin:$PATH"
