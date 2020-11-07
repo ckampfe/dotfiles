@@ -32,6 +32,8 @@ window:
   # Window decorations
   # Setting this to false will result in window without borders and title bar.
   decorations: full
+  dynamic_title: true
+
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -58,19 +60,19 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Fira Code Retina # should be "Menlo" or something on macOS.
+    family: "Fira Code Retina" # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Regular
 
   # The bold font face
   bold:
-    family: Fire Code Retina # should be "Menlo" or something on macOS.
+    family: "Fira Code Retina" # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
-    family: Fira Code Retina # should be "Menlo" or something on macOS.
+    family: "Fira Code Retina" # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Italic
 
@@ -108,8 +110,9 @@ debug:
 colors:
   # Default colors
   primary:
-    background: '0x000000'
-    foreground: '0xeaeaea'
+    # background: '0x000000'
+    background: '0xFFFFFF'
+    foreground: '0x333333'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
@@ -172,7 +175,7 @@ colors:
 #
 # To completely disable the visual bell, set its duration to 0.
 #
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 
@@ -222,8 +225,6 @@ mouse:
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
-
-dynamic_title: true
 
 # hide_cursor_when_typing: false
 
