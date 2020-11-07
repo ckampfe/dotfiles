@@ -19,6 +19,7 @@ alias v='vim '
 alias vim='nvim '
 alias ls="exa -l"
 alias l="exa -la"
+alias ltr="ls target/release"
 alias diff='colordiff '
 alias youp3="youtube-dl -x --audio-format mp3 "
 
@@ -54,12 +55,16 @@ export EDITOR='emacs'
 
 # rust
 export PATH="$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:$HOME/.local/bin"
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 alias cb="cargo build"
 alias cbr="cargo build --release"
 alias ct="cargo test"
 alias ctr="cargo test --release"
-alias ci="cargo install --path . --force"
+alias ci="RUSTFLAGS=\"-C target-cpu=native\" cargo install --path . --force"
+alias co="cargo outdated"
+alias cu="cargo update"
+alias ch="cargo check"
+alias cl="cargo clippy"
+alias build-linux="cross build --release --target=x86_64-unknown-linux-musl"
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
   . "${HOME}/.gpg-agent-info"
@@ -78,6 +83,10 @@ export KERL_DEFAULT_INSTALL_DIR="$HOME/kerl"
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
 
 # . ~/kerl/21.3-builtdocs/activate
+# . /Users/clark/kerl/23.0-builtdocs/activate
+# . /Users/clark/kerl/22.1-builtdocs/activate
+# . /Users/clark/kerl/22.3.4.1-builtdocs/activate
+. /Users/clark/kerl/23.1.1-builtdocs/activate
 
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
