@@ -47,9 +47,11 @@ alias docker-gc="docker run --rm --privileged -v /var/run/docker.sock:/var/run/d
 # elixir/mix
 alias mc='mix compile'
 alias mr='mix run'
+alias mt='mix test'
+alias repl='iex -e "Mix.install([:csv, :floki, :httpoison, :jason, :nimble_parsec])"'
 
 # elm
-alias elm-make="elm make"
+# alias elm-make="elm make"
 
 export EDITOR='emacs'
 
@@ -86,7 +88,22 @@ test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
 # . /Users/clark/kerl/23.0-builtdocs/activate
 # . /Users/clark/kerl/22.1-builtdocs/activate
 # . /Users/clark/kerl/22.3.4.1-builtdocs/activate
-. /Users/clark/kerl/23.1.1-builtdocs/activate
+# . /Users/clark/kerl/23.1.1-builtdocs/activate
+# . /Users/clark/kerl/23.1.2-builtdocs/activate
+# . /Users/clark/kerl/24.0.2-builtdocs/activate
+# . /Users/clark/kerl/24.0.3-builtdocs/activate
+# . /Users/clark/kerl/24.0.4-builtdocs/activate
+# . /Users/clark/kerl/24.0.5-builtdocs/activate
+# . /Users/clark/kerl/24.0.6-builtdocs/activate
+# . /Users/clark/kerl/24.1-builtdocs/activate
+. /Users/clark/kerl/24.1.2-builtdocs/activate
+
+
+function kbuild {
+  KERL_BUILD_DOCS=yes kerl build $1 $1-builtdocs && kerl install $1-builtdocs ~/kerl/$1-builtdocs
+}
+
+
 
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
@@ -96,8 +113,8 @@ export PATH=$PATH:$GOPATH/bin
 # export BOOT_JVM_OPTIONS="--add-modules java.xml.bind"
 
 # graalvm
-export PATH="/Users/clark/Downloads/graalvm-ce-java8-20.0.0/Contents/Home/bin:$PATH"
-export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-java8-20.0.0/Contents/Home"
+# export PATH="/Users/clark/Downloads/graalvm-ce-java8-20.0.0/Contents/Home/bin:$PATH"
+# export GRAALVM_HOME="/Users/clark/Downloads/graalvm-ce-java8-20.0.0/Contents/Home"
 
 
 # use brew sqlite
@@ -105,8 +122,8 @@ export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export SHELL="/usr/local/bin/zsh"
 
-alias view_cap="open http://localhost:5000/entries"
-alias vc="open http://localhost:5000/entries"
+# alias view_cap="open http://localhost:5000/entries"
+# alias vc="open http://localhost:5000/entries"
 
 # Wasmer
 export WASMER_DIR="/Users/clark/.wasmer"
@@ -120,8 +137,8 @@ export WASMTIME_HOME="$HOME/.wasmtime"
 export PATH="$WASMTIME_HOME/bin:$PATH"
 
 # node
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 
 # python/conda
 export PATH="/Users/clark/miniconda3/bin:$PATH"
