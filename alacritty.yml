@@ -115,10 +115,12 @@ colors:
     foreground: '0x333333'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x000000'
-    cursor: '0xffffff'
-    style: Block
+  # cursor:
+  #   text: '0x000000'
+  #   cursor: '0xffffff'
+  #   style:
+  #     shape: Block
+  #     blinking: Never
 
   # Normal colors
   normal:
@@ -235,6 +237,10 @@ selection:
 # - Underline
 # - Beam
 # cursor_style: Block
+cursor:
+  style:
+    shape: Block
+    blinking: Never
 
 # Live config reload (changes require restart)
 live_config_reload: true
