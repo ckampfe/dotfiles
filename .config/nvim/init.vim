@@ -4,8 +4,8 @@ set noswapfile
 set ruler
 
 " pathogen setup
-execute pathogen#infect()
-execute pathogen#helptags()
+" execute pathogen#infect()
+" execute pathogen#helptags()
 
 "syntax highlighting, line numbering, fixes
 syntax on
@@ -35,8 +35,9 @@ set hlsearch
 hi clear SpellBad
 hi SpellBad cterm=underline
 
-colorscheme gruvbox
-set background=dark    " Setting dark mode
+" colorscheme gruvbox
+colorscheme morning
+" set background=dark    " Setting dark mode
 
 " set ambiwidth=double
 set noshowmode
