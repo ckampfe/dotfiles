@@ -135,7 +135,7 @@
   "like clojure's, but not infinite https://clojuredocs.org/clojure.core/range"
   (if end
       (cond ((> end 0) (number-sequence start (- end 1) step))
-            ((= end 0) (number-sequence start (- end (or step 1)) (or step 1)))
+            ((= end 0) (number-sequence start (- end (or step 1)) step))
             (t         (number-sequence start (+ end 1) step)))
     (number-sequence 0 (- start 1) step)))
 
@@ -148,9 +148,8 @@
   (should (equal (ck/range 0 7 2) '(0 2 4 6)))
   (should (equal (ck/range -5 5) '(-5 -4 -3 -2 -1 0 1 2 3 4)))
   (should (equal (ck/range -5 0) '(-5 -4 -3 -2 -1)))
-  (should (equal
-           (ck/range 10 -10 -1)
-           '(10 9 8 7 6 5 4 3 2 1 0 -1 -2 -3 -4 -5 -6 -7 -8 -9)))
+  (should (equal (ck/range 10 -10 -1)
+                 '(10 9 8 7 6 5 4 3 2 1 0 -1 -2 -3 -4 -5 -6 -7 -8 -9)))
   (should (equal (ck/range 100 0 -10)
                  '(100 90 80 70 60 50 40 30 20 10)))
   (should (equal (ck/range -100 100 10)
