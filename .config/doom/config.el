@@ -44,6 +44,8 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
+;; Enable smooth scrolling
+(setq pixel-scroll-precision-mode t)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -91,14 +93,15 @@
         lsp-rust-analyzer-display-chaining-hints t
         lsp-rust-analyzer-display-closure-return-type-hints t))
 
-(setq notes-macos-dir "~/Library/Mobile Documents/com~apple~CloudDocs/notes/")
+;; my custom functions
 
-(setq notes-timestamp-format "%Y%m%d%H%M%S%3N")
+(setq notes-dir-macos "~/Library/Mobile Documents/com~apple~CloudDocs/notes/"
+      notes-timestamp-format "%Y%m%d%H%M%S%3N")
 
 (defun ck/new-note (&optional prefix)
   "make a new note"
   (interactive)
-  (let* ((dir notes-macos-dir)
+  (let* ((dir notes-dir-macos)
          (now (format-time-string notes-timestamp-format (current-time) t))
          (filename (if prefix
                        (concat prefix "-" now ".md")
@@ -106,12 +109,13 @@
          (buf (create-file-buffer filename)))
     (switch-to-buffer buf)
     (setq-local default-directory dir)
+    (markdown-mode)
     filename))
 
 (defun ck/new-note-with-region (start end &optional prefix)
   "make a new note with the current region as its contents"
   (interactive "r") ;; "r" for region, which adds the start and end params
-  (let* ((dir notes-macos-dir)
+  (let* ((dir notes-dir-macos)
          (now (format-time-string notes-timestamp-format (current-time) t))
          (filename (if prefix
                        (concat prefix "-" now ".md")
@@ -120,4 +124,34 @@
          (s (buffer-substring-no-properties start end)))
     (switch-to-buffer buf)
     (setq-local default-directory dir)
+    (markdown-mode)
     (insert s)))
+
+(defmacro ck/comment (&rest _body)
+  "Comment out one or more s-expressions."
+  nil)
+
+(defun ck/range (start &optional end step)
+  "like clojure's, but not infinite https://clojuredocs.org/clojure.core/range"
+  (if end
+      (cond ((> end 0) (number-sequence start (- end 1) step))
+            ((= end 0) (number-sequence start (- end (or step 1)) (or step 1)))
+            (t         (number-sequence start (+ end 1) step)))
+    (number-sequence 0 (- start 1) step)))
+
+(ert-deftest ck/range-test ()
+  (should (equal (ck/range 0) nil))
+  (should (equal (ck/range 5) '(0 1 2 3 4)))
+  (should (equal (ck/range 0 4 2) '(0 2)))
+  (should (equal (ck/range 0 5 2) '(0 2 4)))
+  (should (equal (ck/range 0 6 2) '(0 2 4)))
+  (should (equal (ck/range 0 7 2) '(0 2 4 6)))
+  (should (equal (ck/range -5 5) '(-5 -4 -3 -2 -1 0 1 2 3 4)))
+  (should (equal (ck/range -5 0) '(-5 -4 -3 -2 -1)))
+  (should (equal
+           (ck/range 10 -10 -1)
+           '(10 9 8 7 6 5 4 3 2 1 0 -1 -2 -3 -4 -5 -6 -7 -8 -9)))
+  (should (equal (ck/range 100 0 -10)
+                 '(100 90 80 70 60 50 40 30 20 10)))
+  (should (equal (ck/range -100 100 10)
+                 '(-100 -90 -80 -70 -60 -50 -40 -30 -20 -10 0 10 20 30 40 50 60 70 80 90))))
