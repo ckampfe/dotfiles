@@ -9,11 +9,13 @@ export PATH=/Users/clark/.mix/escripts:$PATH
 export PATH="/Applications/Emacs.app/Contents/MacOS:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
-export PATH=$PATH:$HOME/code/elixir-ls/release
+# export PATH=$PATH:$HOME/code/elixir-ls/release
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
 # DAWN: for PIC
 export PATH="$PATH:/Applications/microchip/xc8/v2.36/bin"
 export PATH="$PATH:/Applications/microchip/xc16/v2.00/bin"
+export PATH="/opt/homebrew/opt/goawk/bin:$PATH"
+
 # node
 # export PATH=~/.nvm/versions/node/v12.22.12/bin:$PATH
 # export NVM_DIR=~/.nvm
@@ -38,8 +40,8 @@ alias tmux="TERM=xterm-256color tmux"
 alias be='bundle exec '
 alias mylocalip='ifconfig | grep 192'
 alias vim='nvim '
-alias ls="exa -l"
-alias l="exa -la"
+alias ls="eza -l"
+alias l="eza -la"
 # alias diff='colordiff '
 alias youp3="youtube-dl -x --audio-format mp3 "
 alias worklog="vim ~/code/dawn/work.md"
@@ -80,6 +82,18 @@ function repl() {
     iex -e "Mix.install([:csv, :easyhtml, :jason, :nimble_parsec, :req, {:util, git: \"https://github.com/ckampfe/util.git\"}])"
   fi
 }
+
+alias ee='elixir -e "Mix.install([:csv, :easyhtml, :explorer, :jason, :nimble_parsec, :req, {:util, git: \"https://github.com/ckampfe/util.git\"}])"'
+alias eef='elixir -e "Mix.install([:csv, :easyhtml, :explorer, :jason, :nimble_parsec, :req, {:util, git: \"https://github.com/ckampfe/util.git\"}], force: true)"'
+
+# function ee() {
+#   if [[ ($1 == "-f") || ($1 == "--force") ]]
+#   then
+#     elixir -e "Mix.install([:csv, :easyhtml, :jason, :nimble_parsec, :req, {:util, git: \"https://github.com/ckampfe/util.git\"}], force: true)"
+#   else
+#     elixir -e "Mix.install([:csv, :easyhtml, :jason, :nimble_parsec, :req, {:util, git: \"https://github.com/ckampfe/util.git\"}])"
+#   fi
+# }
 
 # rust
 alias ltr="ls target/release"
