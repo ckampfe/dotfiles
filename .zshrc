@@ -9,17 +9,8 @@ export PATH=/Users/clark/.mix/escripts:$PATH
 export PATH="/Applications/Emacs.app/Contents/MacOS:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
-# export PATH=$PATH:$HOME/code/elixir-ls/release
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
-# DAWN: for PIC
-export PATH="$PATH:/Applications/microchip/xc8/v2.36/bin"
-export PATH="$PATH:/Applications/microchip/xc16/v2.00/bin"
 export PATH="/opt/homebrew/opt/goawk/bin:$PATH"
-
-# node
-# export PATH=~/.nvm/versions/node/v12.22.12/bin:$PATH
-# export NVM_DIR=~/.nvm
-# [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh" --no-use
 
 export TERM=screen-256color
 
@@ -29,11 +20,6 @@ export SAVEHIST=$HISTSIZE
 setopt share_history
 setopt inc_append_history
 eval $(fc -A)
-
-# ruby
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.2.2
 
 # misc
 alias tmux="TERM=xterm-256color tmux"
@@ -77,9 +63,9 @@ alias mt='mix test'
 function repl() {
   if [[ ($1 == "-f") || ($1 == "--force") ]]
   then
-    iex -e "Mix.install([:csv, :easyhtml, :jason, :nimble_parsec, :req, {:util, git: \"https://github.com/ckampfe/util.git\"}], force: true)"
+    iex -e "Mix.install([:csv, :easyhtml, :explorer, :jason, :nimble_parsec, :req, {:util, git: \"https://github.com/ckampfe/util.git\"}], force: true)"
   else
-    iex -e "Mix.install([:csv, :easyhtml, :jason, :nimble_parsec, :req, {:util, git: \"https://github.com/ckampfe/util.git\"}])"
+    iex -e "Mix.install([:csv, :easyhtml, :explorer, :jason, :nimble_parsec, :req, {:util, git: \"https://github.com/ckampfe/util.git\"}])"
   fi
 }
 
@@ -111,50 +97,16 @@ alias build-linux="cross build --release --target=x86_64-unknown-linux-musl"
 alias du="dust"
 alias cat="bat"
 
-# elixir/erlang
-export ERL_AFLAGS="-kernel shell_history enabled"
-export KERL_DEFAULT_INSTALL_DIR="$HOME/kerl"
-test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
-export PATH="$PATH:/Users/clark/code/elixir/bin"
-
-# . /Users/clark/kerl/24.2-builtdocs/activate
-# . /Users/clark/kerl/24.2.1-builtdocs/activate
-# . /Users/clark/kerl/24.3.1-builtdocs/activate
-# . /Users/clark/kerl/25.0-builtdocs/activate
-# . /Users/clark/kerl/25.0.1-builtdocs/activate
-# . /Users/clark/kerl/25.0.2-builtdocs/activate
-# . /Users/clark/kerl/25.0.3-builtdocs/activate
-# . /Users/clark/kerl/25.0.4-builtdocs/activate
-# . /Users/clark/kerl/25.1.1-builtdocs/activate
-# . /Users/clark/kerl/25.1.2-builtdocs/activate
-# . /Users/clark/kerl/25.2-builtdocs/activate
-# . /Users/clark/kerl/25.2.1-builtdocs/activate
-# . /Users/clark/kerl/25.3-builtdocs/activate
-# . /Users/clark/kerl/25.3.1-builtdocs/activate
-# . /Users/clark/kerl/25.3.2-builtdocs/activate
-# . /Users/clark/kerl/25.3.2.1-builtdocs/activate
-# . /Users/clark/kerl/25.3.2.2-builtdocs/activate
-# . /Users/clark/kerl/26.0-rc1-builtdocs/activate
-# . /Users/clark/kerl/26.0-rc3-builtdocs/activate
-# . /Users/clark/kerl/26.0-builtdocs/activate
-# . /Users/clark/kerl/26.0.1-builtdocs/activate
-. /Users/clark/kerl/26.0.2-builtdocs/activate
-
-
-
 alias youtube-dl="yt-dlp"
 
-
-# kerl: build the given erlang version
-function kbuild {
-  export KERL_BUILD_DOCS=yes
-  kerl build $1 $1-builtdocs && kerl install $1-builtdocs ~/kerl/$1-builtdocs
-  unset KERL_BUILD_DOCS
+function dl-video() {
+  yt-dlp -f "bv*+ba/b" "$1"
 }
 
-# kerl: build erlang from master branch
-function kbuild_master {
-KERL_BUILD_DOCS=yes kerl build git https://github.com/erlang/otp.git master 25.0_master-builtdocs && kerl install 25.0_master-builtdocs ~/kerl/25.0_master-builtdocs
+function asmr() {
+  pushd "/Users/clark/Downloads/asmr"
+  dl-video "$1"
+  popd
 }
 
 # extract frames from a video to individual image files.
@@ -175,23 +127,15 @@ function update-rust-analzyer() {
   chmod +x ~/.cargo/bin/rust-analyzer
 }
 
-
 # use brew sqlite
 export SHELL="/bin/zsh"
 
 # prompt
 eval "$(starship init zsh)"
 
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
+source /Users/clark/code/shelldb/shelldb.sh
 
-export IDF_PATH="/Users/clark/code/esp-idf"
-# export PATH="/Users/clark/code/esp-idf:$PATH"
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
